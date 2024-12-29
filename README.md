@@ -1,0 +1,2 @@
+# GEMS
+Pengeloaan Penjualan Gadget
