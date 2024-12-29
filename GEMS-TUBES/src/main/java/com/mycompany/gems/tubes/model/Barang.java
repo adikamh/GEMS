@@ -6,10 +6,8 @@ package com.mycompany.gems.tubes.model;
 
 /**
  *
- * @author ADIKA
+ * @author user
  */
-public class main {
-    public static void main(String[] args) {
-        System.out.println("test");
-    }
+public class Barang {
+    
 }
