@@ -1,0 +1,4 @@
+com\mycompany\gems\tubes\model\main.class
+com\gevam\gems\tubes\config\ConnectionManager.class
+com\gevam\gems\tubes\view\viewMenu.class
+com\gevam\gems\tubes\view\viewMenu$1.class
