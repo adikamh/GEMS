@@ -4,7 +4,7 @@
  */
 package com.gevam.gems.tubes.view;
 
-import com.gevam.gems.tubes.repository.ControllerLogin;
+import com.gevam.gems.tubes.repository.ControllerLoginAdmin;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author ADIKA
  */
 public class viewLoginAdmin extends javax.swing.JFrame {
-    ControllerLogin conLog = new ControllerLogin();
+    ControllerLoginAdmin conLog = new ControllerLoginAdmin();
     
     /**
      * Creates new form viewLogin

@@ -14,7 +14,7 @@ import com.gevam.gems.tubes.config.ConnectionManager;
  *
  * @author ADIKA
  */
-public class ControllerLogin {
+public class ControllerLoginAdmin {
 
     private ConnectionManager conMan;
     private Connection conn;
@@ -42,20 +42,5 @@ public class ControllerLogin {
         } catch (SQLException ex) {
             return stat;
         }
-    }
-    
-    public int register(String user, String pwd){
-        int stat = 0;
-        String query = "INSERT INTO  `supermarket_is`.`admin` (`Username`, `Password`) VALUES ('"+user+"','"+pwd+"');";
-        conMan = new ConnectionManager();
-        conn = conMan.logOn();
-        try{
-        stmt = conn.createStatement();
-        stmt.executeUpdate(query);
-        conMan.logOff();
-    } catch (SQLException ex) {
-            System.out.println("error: " + ex.getMessage());
-    }
-        return stat;
     }
 }
