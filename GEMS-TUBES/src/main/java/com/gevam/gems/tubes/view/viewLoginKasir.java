@@ -4,7 +4,7 @@
  */
 package com.gevam.gems.tubes.view;
 
-import com.gevam.gems.tubes.repository.ControllerLogin;
+import com.gevam.gems.tubes.repository.ControllerLoginKasir;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author ADIKA
  */
 public class viewLoginKasir extends javax.swing.JFrame {
-    ControllerLogin conLog = new ControllerLogin();
+    ControllerLoginKasir conLogKasir = new ControllerLoginKasir();
     
     /**
      * Creates new form viewLogin
@@ -226,7 +226,7 @@ public class viewLoginKasir extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        int stat = conLog.Login(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
+        int stat = conLogKasir.Login(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
         
         if(stat == 1) {
             JOptionPane.showMessageDialog(null, "Login Berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
