@@ -1,4 +1,4 @@
-package com.mycompany.gems.tubes.model;
+package com.gevam.gems.tubes.model;
 
 /**
  *
@@ -6,9 +6,10 @@ package com.mycompany.gems.tubes.model;
  */
 
 public class Barang {
-    private String id;
+    private int id;
     private String namaBarang;
-    private double harga;
+    private String jenis;
+    private int harga;
     private String merk;
     private String warna;
     private int garansi;
@@ -17,9 +18,10 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(String id, String namaBarang, double harga, String merk, String warna, int garansi, int stok) {
+    public Barang(int id, String namaBarang, String jenis, int harga, String merk, String warna, int garansi, int stok) {
         this.id = id;
         this.namaBarang = namaBarang;
+        this.jenis = jenis;
         this.harga = harga;
         this.merk = merk;
         this.warna = warna;
@@ -27,11 +29,11 @@ public class Barang {
         this.stok = stok;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -43,11 +45,19 @@ public class Barang {
         this.namaBarang = namaBarang;
     }
 
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
+    }
+
+    public String getJenis() {
+        return jenis;
+    }
+    
     public double getHarga() {
         return harga;
     }
 
-    public void setHarga(double harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
     }
 
