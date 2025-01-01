@@ -1,5 +1,10 @@
-C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenu.java
-C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLogin.java
-C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\mycompany\gems\tubes\model\Barang.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLoginAdmin.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewTambahProduk.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenuLogin.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerTambahProduk.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginKasir.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginAdmin.java
 C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\config\ConnectionManager.java
-C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLogin.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenuAdmin.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\model\Barang.java
+C:\PROJECT-TUBES\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLoginKasir.java
