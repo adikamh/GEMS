@@ -8,6 +8,7 @@ package com.gevam.gems.tubes.model;
 public class Barang {
     private int id;
     private String namaBarang;
+    private String newNama;
     private String jenis;
     private int harga;
     private String merk;
@@ -18,9 +19,10 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(int id, String namaBarang, String jenis, int harga, String merk, String warna, int garansi, int stok) {
+    public Barang(int id, String namaBarang, String newNama, String jenis, int harga, String merk, String warna, int garansi, int stok) {
         this.id = id;
         this.namaBarang = namaBarang;
+        this.newNama = newNama;
         this.jenis = jenis;
         this.harga = harga;
         this.merk = merk;
@@ -45,15 +47,23 @@ public class Barang {
         this.namaBarang = namaBarang;
     }
 
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
+    public String getNewNama() {
+        return newNama;
+    }
+
+    public void setNewNama(String newNama) {
+        this.newNama = newNama;
     }
 
     public String getJenis() {
         return jenis;
     }
-    
-    public double getHarga() {
+
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
+    }
+
+    public int getHarga() {
         return harga;
     }
 
@@ -92,5 +102,7 @@ public class Barang {
     public void setStok(int stok) {
         this.stok = stok;
     }
+
+    
                    
 }

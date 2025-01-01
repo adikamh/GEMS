@@ -21,7 +21,7 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import com.gevam.gems.tubes.model.Barang;
-import com.gevam.gems.tubes.repository.ControllerTambahProduk;
+import com.gevam.gems.tubes.repository.ControllerBarang;
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
@@ -31,7 +31,7 @@ import net.coobird.thumbnailator.Thumbnails;
 public class viewTambahProduk extends javax.swing.JFrame {
 
     Boolean hasil;
-    ControllerTambahProduk conBarang = new ControllerTambahProduk();
+    ControllerBarang conBarang = new ControllerBarang();
     private DefaultTableModel model;
     
     /**
@@ -286,9 +286,9 @@ public class viewTambahProduk extends javax.swing.JFrame {
                     .addComponent(btnUploadFoto)
                     .addComponent(btnBersihkan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnKirim)
-                    .addComponent(txt_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKirim))
                 .addGap(14, 14, 14))
         );
 
