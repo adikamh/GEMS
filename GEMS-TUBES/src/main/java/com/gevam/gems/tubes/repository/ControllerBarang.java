@@ -20,7 +20,7 @@ import com.gevam.gems.tubes.config.ConnectionManager;
  *
  * @author ADIKA
  */
-public class ControllerTambahProduk {
+public class ControllerBarang {
     
     Scanner scan = new Scanner(System.in);
     ConnectionManager koneksi = new ConnectionManager();
@@ -62,4 +62,63 @@ public class ControllerTambahProduk {
         }
         return listBarang;
     }
+    
+     public boolean updateBarang(String newNama, String namaBarang, String jenis , int harga , String merk, String warna , int garansi , int stok, int id){
+        String query = "UPDATE barang SET  stok=" + stok +" ,garansi = " + garansi+" ,warna = '"+ warna + "' ,merk = '"+ merk + "' ,harga = "+ harga + ",jenis = '" + jenis + "' ,namaBarang = '"
+                + newNama + "' WHERE id = " + id;
+        try{
+            Statement stm = con.createStatement();
+            stm.executeUpdate(query);
+            return true;
+        } catch (SQLException ex){
+            System.out.println(ex.toString());
+            return false;
+        }
+    }
+    
+    public boolean deleteBarang(int id) {
+    if (con == null) {
+        System.out.println("Database connection is not established.");
+        return false;
+    }
+    
+    String query = "DELETE FROM barang WHERE id= " + id;
+    try {
+        Statement stm = con.createStatement();
+        int rows = stm.executeUpdate(query);
+
+        // Jika setidaknya ada satu baris yang dihapus, operasi berhasil
+        return rows > 0;
+    } catch (SQLException ex) {
+        System.out.println(ex.toString());
+        return false;
+    }
+    }
+    
+    public List<Barang> tampilkanBarangSearch(String namaBarang){
+        List<Barang> listBarang= new ArrayList<Barang>();
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM barang  where namaBarang = '" + namaBarang + "'");
+            while (rs.next()){
+                Barang barang = new Barang();
+                barang.setId(rs.getInt("id"));
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                barang.setJenis(rs.getString("jenis"));
+                barang.setHarga(rs.getInt("harga"));
+                barang.setMerk(rs.getString("merk"));
+                barang.setWarna(rs.getString("warna"));
+                barang.setGaransi(rs.getInt("garansi"));
+                barang.setStok(rs.getInt("stok"));
+                
+                listBarang.add(barang);
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+        return listBarang;
+    }
+    
+    
+    
 }
