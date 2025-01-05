@@ -412,23 +412,7 @@ public class viewMenuAdmin extends javax.swing.JFrame {
 
     private void tabelBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelBarangMouseClicked
         // TODO add your handling code here:
-        int i = tabelBarang.getSelectedRow();
-        
-        TableModel model = tabelBarang.getModel();
-        String namaBarang = model.getValueAt(i,1).toString();
-        String jenis = model.getValueAt(i,2).toString();
-        int harga = Integer.parseInt(model.getValueAt(i, 3).toString());
-        String merk = model.getValueAt(i,4).toString();
-        String warna = model.getValueAt(i,5).toString();
-        int garansi = Integer.parseInt(model.getValueAt(i, 6).toString());
-        int stok = Integer.parseInt(model.getValueAt(i, 7).toString());
-        txtNamaBarang.setText(namaBarang);
-        txtJenis.setText(jenis);
-        txtHarga.setText(harga+"");
-        txtMerk.setText(merk);
-        txtWarna.setText(warna);
-        txtGaransi.setText(garansi+"");
-        txtStok.setText(stok+"");
+
     }//GEN-LAST:event_tabelBarangMouseClicked
 
     /**
