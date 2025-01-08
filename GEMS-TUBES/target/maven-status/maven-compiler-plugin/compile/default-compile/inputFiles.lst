@@ -1,10 +1,9 @@
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\config\ConnectionManager.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\model\Barang.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerBarang.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginAdmin.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginKasir.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLoginAdmin.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLoginKasir.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenuAdmin.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenuLogin.java
-Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewTambahProduk.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\config\ConnectionManager.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\model\Barang.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerBarang.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginAdmin.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginKasir.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewDashboard.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLogin.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewMenuAdmin.java
+C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewTambahProduk.java
