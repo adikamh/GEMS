@@ -106,7 +106,7 @@ public class viewLogin extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         txtUsername.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsername.setForeground(new java.awt.Color(204, 255, 255));
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
         txtUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +159,6 @@ public class viewLogin extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setForeground(new java.awt.Color(0, 255, 204));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\naufa\\Documents\\TUGAS BESAR\\Logo1fix.png")); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Castellar", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 153, 102));
@@ -287,6 +286,7 @@ public class viewLogin extends javax.swing.JFrame {
 
         if(stat == 1) {
             JOptionPane.showMessageDialog(null, "Login Berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new viewTambahProduk().setVisible(true);
             dispose();
         }else{
             JOptionPane.showMessageDialog(null,"Username atau Password yang anda masukan salah","Pesan",JOptionPane.INFORMATION_MESSAGE);
