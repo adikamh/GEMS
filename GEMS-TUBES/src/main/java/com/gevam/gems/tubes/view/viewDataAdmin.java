@@ -20,10 +20,8 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import com.gevam.gems.tubes.model.Barang;
 import com.gevam.gems.tubes.model.User;
-import com.gevam.gems.tubes.repository.ControllerDataKasir;
-import javax.swing.DefaultBoundedRangeModel;
+import com.gevam.gems.tubes.repository.ControllerDataAdmin;
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
@@ -31,49 +29,49 @@ import net.coobird.thumbnailator.Thumbnails;
  * @author ADIKA
  */
 
-public class viewDataKasir extends javax.swing.JFrame {
+public class viewDataAdmin extends javax.swing.JFrame {
     
     Boolean hasil;
-    ControllerDataKasir conKasir = new ControllerDataKasir();
+    ControllerDataAdmin conAdmin = new ControllerDataAdmin();
     private DefaultTableModel model;
     
-    public viewDataKasir() {
+    public viewDataAdmin() {
         initComponents();
         setLocationRelativeTo(null);
         model = new DefaultTableModel();
         
-        tabelKasir.setModel(model);
+        tabelAdmin.setModel(model);
         
         model.addColumn("ID");
-        model.addColumn("Nama Kasir");
+        model.addColumn("Nama Admin");
         model.addColumn("Username");
         model.addColumn("Password");
         getData();
     }
     
     public final void getData(){
-        DefaultTableModel dtm = (DefaultTableModel) tabelKasir.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tabelAdmin.getModel();
 
         dtm.setRowCount(0);
 
-        List<User> listKasir = conKasir.showKasir();
+        List<User> listAdmin = conAdmin.showAdmin();
         String[] data = new String[4];
-        for (User newKasir : listKasir) {
-            data[0] = Integer.toString(newKasir.getID());
-            data[1] = newKasir.getNama();
-            data[2] = newKasir.getUsername();
-            data[3] = newKasir.getPassword();
+        for (User newAdmin : listAdmin) {
+            data[0] = Integer.toString(newAdmin.getID());
+            data[1] = newAdmin.getNama();
+            data[2] = newAdmin.getUsername();
+            data[3] = newAdmin.getPassword();
             dtm.addRow(data);
         }
     }
     
     private void clearData() {
-        txtNamaKasir.setText("");
-        txtUsernameKasir.setText("");
-        txtPasswordKasir.setText("");
-        txtNamaKasir.setEditable(true);
-        txtUsernameKasir.setEditable(true);
-        txtPasswordKasir.setEditable(true);
+        txtNamaAdmin.setText("");
+        txtUsernameAdmin.setText("");
+        txtPasswordAdmin.setText("");
+        txtNamaAdmin.setEditable(true);
+        txtUsernameAdmin.setEditable(true);
+        txtPasswordAdmin.setEditable(true);
         lbl_image.setIcon(null);
     }
 
@@ -89,11 +87,11 @@ public class viewDataKasir extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNamaKasir = new javax.swing.JTextField();
+        txtNamaAdmin = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtUsernameKasir = new javax.swing.JTextField();
+        txtUsernameAdmin = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPasswordKasir = new javax.swing.JTextField();
+        txtPasswordAdmin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         lbl_image = new javax.swing.JLabel();
@@ -103,7 +101,7 @@ public class viewDataKasir extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelKasir = new javax.swing.JTable();
+        tabelAdmin = new javax.swing.JTable();
         btnClear = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
@@ -115,25 +113,25 @@ public class viewDataKasir extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("DATA KASIR");
+        jLabel1.setText("DATA ADMIN");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Tambah data kasir");
+        jLabel2.setText("Menambah data Admin");
 
-        txtNamaKasir.addActionListener(new java.awt.event.ActionListener() {
+        txtNamaAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaKasirActionPerformed(evt);
+                txtNamaAdminActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Nama kasir");
+        jLabel3.setText("Nama Admin");
 
-        txtUsernameKasir.addActionListener(new java.awt.event.ActionListener() {
+        txtUsernameAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameKasirActionPerformed(evt);
+                txtUsernameAdminActionPerformed(evt);
             }
         });
 
@@ -141,9 +139,9 @@ public class viewDataKasir extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Username ");
 
-        txtPasswordKasir.addActionListener(new java.awt.event.ActionListener() {
+        txtPasswordAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordKasirActionPerformed(evt);
+                txtPasswordAdminActionPerformed(evt);
             }
         });
 
@@ -194,7 +192,7 @@ public class viewDataKasir extends javax.swing.JFrame {
 
         btnBack.setText("Back To Menu");
 
-        tabelKasir.setModel(new javax.swing.table.DefaultTableModel(
+        tabelAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -202,7 +200,7 @@ public class viewDataKasir extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nama Kasir", "Username", "Password"
+                "ID", "Nama Admin", "Username", "Password"
             }
         ) {
             Class[] types = new Class [] {
@@ -213,12 +211,12 @@ public class viewDataKasir extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tabelKasir.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelKasirMouseClicked(evt);
+                tabelAdminMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelKasir);
+        jScrollPane1.setViewportView(tabelAdmin);
 
         btnClear.setText("BERSIHKAN");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -265,9 +263,9 @@ public class viewDataKasir extends javax.swing.JFrame {
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPasswordKasir, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                    .addComponent(txtUsernameKasir)
-                                    .addComponent(txtNamaKasir))
+                                    .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                    .addComponent(txtUsernameAdmin)
+                                    .addComponent(txtNamaAdmin))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnTambah)))
                         .addGap(12, 12, 12)
@@ -311,16 +309,16 @@ public class viewDataKasir extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNamaKasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNamaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(btnTambah))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUsernameKasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsernameAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPasswordKasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)))
                     .addComponent(jDesktopPane1))
                 .addGap(16, 16, 16)
@@ -354,25 +352,25 @@ public class viewDataKasir extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNamaKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaKasirActionPerformed
+    private void txtNamaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaKasirActionPerformed
+    }//GEN-LAST:event_txtNamaAdminActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-        hasil = conKasir.insertDataKasir(txtNamaKasir.getText(),
-               txtUsernameKasir.getText(),
-                txtPasswordKasir.getText());
+        hasil = conAdmin.insertDataAdmin(txtNamaAdmin.getText(),
+               txtUsernameAdmin.getText(),
+                txtPasswordAdmin.getText());
        String targetDirPath = "src/main/java/com/gevam/gems/tubes/image";
        File targetDir = new File(targetDirPath);
        if(!targetDir.exists()) {
            targetDir.mkdir();
        }
-       String fileName = txtNamaKasir.getText().replaceAll("\\s+", "_") + ".jpeg";
+       String fileName = txtNamaAdmin.getText().replaceAll("\\s+", "_") + ".jpeg";
        File targetFile = new File(targetDir,fileName);
        
        try (OutputStream os = new FileOutputStream(targetFile)) {
-           os.write(kasirImage);
+           os.write(adminImage);
            JOptionPane.showMessageDialog(null, "Gambar disimpan di: " + targetFile.getAbsolutePath());
        } catch (IOException ex) {
            JOptionPane.showMessageDialog(null, "Error saat menyimpan gambar: " + ex.getMessage());
@@ -393,20 +391,20 @@ public class viewDataKasir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCariActionPerformed
 
-    private void txtUsernameKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameKasirActionPerformed
+    private void txtUsernameAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameKasirActionPerformed
+    }//GEN-LAST:event_txtUsernameAdminActionPerformed
 
-    private void txtPasswordKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordKasirActionPerformed
+    private void txtPasswordAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordKasirActionPerformed
+    }//GEN-LAST:event_txtPasswordAdminActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
         try {
         String Nama = txtCari.getText();
         
-        tampilkanDataKasir(Nama);
+        tampilkanDataAdmin(Nama);
         } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "ID harus berupa angka.");
         }
@@ -425,18 +423,18 @@ public class viewDataKasir extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int i = tabelKasir.getSelectedRow();
+        int i = tabelAdmin.getSelectedRow();
             if (i == -1) {
                 JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus!", "Warning", WARNING_MESSAGE);
             return;
         }
 
-    int idKasir = Integer.parseInt(tabelKasir.getValueAt(i, 0).toString());
+    int idAdmin = Integer.parseInt(tabelAdmin.getValueAt(i, 0).toString());
 
     int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?",
             "Konfirmasi", JOptionPane.YES_NO_OPTION);
     if (confirm == JOptionPane.YES_OPTION) {
-        boolean hasil = conKasir.hapusDataKasir(idKasir);
+        boolean hasil = conAdmin.hapusDataAdmin(idAdmin);
         if (hasil) {
             JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
             
@@ -449,7 +447,7 @@ public class viewDataKasir extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        int i = tabelKasir.getSelectedRow();
+        int i = tabelAdmin.getSelectedRow();
 
         if (i == -1) {
             JOptionPane.showMessageDialog(btnUpdate, 
@@ -458,32 +456,32 @@ public class viewDataKasir extends javax.swing.JFrame {
             return;
         }
         
-        int idKasir = Integer.parseInt(tabelKasir.getModel().getValueAt(i, 0).toString());
-        String oldNama = tabelKasir.getModel().getValueAt(i, 1).toString();
-        String oldUsername = tabelKasir.getModel().getValueAt(i, 2).toString();
-        String oldPassword = tabelKasir.getModel().getValueAt(i, 2).toString();
+        int idAdmin = Integer.parseInt(tabelAdmin.getModel().getValueAt(i, 0).toString());
+        String oldNama = tabelAdmin.getModel().getValueAt(i, 1).toString();
+        String oldUsername = tabelAdmin.getModel().getValueAt(i, 2).toString();
+        String oldPassword = tabelAdmin.getModel().getValueAt(i, 2).toString();
         
-        conKasir.updateDataKasir(txtNamaKasir.getText(), txtUsernameKasir.getText(), txtPasswordKasir.getText(), oldNama, oldUsername, oldPassword, idKasir);
+        conAdmin.updateDataAdmin(txtNamaAdmin.getText(), txtUsernameAdmin.getText(), txtPasswordAdmin.getText(), oldNama, oldUsername, oldPassword, idAdmin);
         JOptionPane.showMessageDialog(btnUpdate, "Data berhasil diUpdate");
         getData();
         clearData();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void tabelKasirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelKasirMouseClicked
+    private void tabelAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelAdminMouseClicked
         // TODO add your handling code here:
-        int i = tabelKasir.getSelectedRow();
+        int i = tabelAdmin.getSelectedRow();
 
-        TableModel model = tabelKasir.getModel();
-        String namaKasir = model.getValueAt(i, 1).toString();
+        TableModel model = tabelAdmin.getModel();
+        String namaAdmin = model.getValueAt(i, 1).toString();
         String username = model.getValueAt(i, 2).toString();
         String password = model.getValueAt(i, 3).toString();
         
-        txtNamaKasir.setText( namaKasir);
-        txtUsernameKasir.setText(username);
-        txtPasswordKasir.setText(password);
+        txtNamaAdmin.setText( namaAdmin);
+        txtUsernameAdmin.setText(username);
+        txtPasswordAdmin.setText(password);
         
         try{
-            File imageFile = new File("src/main/java/com/gevam/gems" + "/tubes/image/" +namaKasir+ ".jpeg");
+            File imageFile = new File("src/main/java/com/gevam/gems" + "/tubes/image/" +namaAdmin+ ".jpeg");
             if(imageFile != null) {
                 BufferedImage originalImage = ImageIO.read(imageFile);
                 BufferedImage resizedImage = Thumbnails.of(originalImage).size(230,130).asBufferedImage();
@@ -494,13 +492,13 @@ public class viewDataKasir extends javax.swing.JFrame {
                 byte[] imageData = baos.toByteArray();
             } else {
                 lbl_image.setIcon(null);
-                JOptionPane.showMessageDialog(null,"Gambar tidak ditembukan untuk data " + namaKasir);
+                JOptionPane.showMessageDialog(null,"Gambar tidak ditembukan untuk data " + namaAdmin);
             }
         } catch (IOException e) {
             lbl_image.setIcon(null);
             JOptionPane.showMessageDialog(null, "Error saat memuat gambar: " + e.getMessage());
         }
-    }//GEN-LAST:event_tabelKasirMouseClicked
+    }//GEN-LAST:event_tabelAdminMouseClicked
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
@@ -529,7 +527,7 @@ public class viewDataKasir extends javax.swing.JFrame {
                 }
                 mobilIcon = new ImageIcon(thumbnail);
                 lbl_image.setIcon(mobilIcon);
-                kasirImage = bos.toByteArray();
+                adminImage = bos.toByteArray();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error processing image: " + e.getMessage());
         }
@@ -555,14 +553,18 @@ public class viewDataKasir extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(viewDataKasir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewDataAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(viewDataKasir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewDataAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(viewDataKasir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewDataAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(viewDataKasir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewDataAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -571,22 +573,22 @@ public class viewDataKasir extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new viewDataKasir().setVisible(true);
+                new viewDataAdmin().setVisible(true);
             }
         });
     }
     
-    private void tampilkanDataKasir(String Nama) {
-    User kasir = conKasir.cariDataKasir(Nama);
-    DefaultTableModel dtm = (DefaultTableModel) tabelKasir.getModel();
+    private void tampilkanDataAdmin(String Nama) {
+    User Admin = conAdmin.cariDataAdmin(Nama);
+    DefaultTableModel dtm = (DefaultTableModel) tabelAdmin.getModel();
     dtm.setRowCount(0);
     
-    if (kasir != null) {
+    if (Admin != null) {
         String[] data = new String[4];
-        data[0] = Integer.toString(kasir.getID());
-        data[1] = kasir.getNama();
-        data[2] = kasir.getUsername();
-        data[3] = kasir.getPassword();
+        data[0] = Integer.toString(Admin.getID());
+        data[1] = Admin.getNama();
+        data[2] = Admin.getUsername();
+        data[3] = Admin.getPassword();
         dtm.addRow(data);
     } else {
         JOptionPane.showMessageDialog(null, "Kasir dengan Nama " + Nama + " tidak ditemukan.");
@@ -610,11 +612,11 @@ public class viewDataKasir extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_image;
-    private javax.swing.JTable tabelKasir;
+    private javax.swing.JTable tabelAdmin;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtNamaKasir;
-    private javax.swing.JTextField txtPasswordKasir;
-    private javax.swing.JTextField txtUsernameKasir;
+    private javax.swing.JTextField txtNamaAdmin;
+    private javax.swing.JTextField txtPasswordAdmin;
+    private javax.swing.JTextField txtUsernameAdmin;
     // End of variables declaration//GEN-END:variables
-byte[] kasirImage = null;
+byte[] adminImage = null;
 }

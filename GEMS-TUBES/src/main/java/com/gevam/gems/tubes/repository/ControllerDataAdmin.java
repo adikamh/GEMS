@@ -20,14 +20,14 @@ import com.gevam.gems.tubes.config.ConnectionManager;
  * @author ADIKA
  */
 
-public class ControllerDataKasir {
+public class ControllerDataAdmin {
     Scanner sc = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.logOn();
     
-    public boolean insertDataKasir(String Nama,String Username, String Password){
-       String query = "INSERT INTO kasir (Nama, Username, Password) "
-             + "VALUES ('" + Nama + "', '" + Username + "', " + Password + ")";
+    public boolean insertDataAdmin(String Nama,String Username, String Password){
+       String query = "INSERT INTO admin (Nama, Username, Password) "
+             + "VALUES ('" + Nama + "', '" + Username + "', '" + Password + "')";
 
         try {
             Statement stm = con.createStatement();
@@ -39,29 +39,29 @@ public class ControllerDataKasir {
         }
     }
     
-    public List<User> showKasir(){
-        List<User> listKasir = new ArrayList<User>();
+    public List<User> showAdmin(){
+        List<User> listAdmin = new ArrayList<User>();
         try {
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM kasir");
+            ResultSet rs = stm.executeQuery("SELECT * FROM admin");
             while (rs.next()) {                
                 User usr = new User() {};
-                usr.setID(rs.getInt("ID"));
+                usr.setID(rs.getInt("ID_admin"));
                 usr.setNama(rs.getString("Nama"));
                 usr.setUsername(rs.getString("Username"));
                 usr.setPassword(rs.getString("Password"));
-                listKasir.add(usr);
+                listAdmin.add(usr);
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return listKasir;
+        return listAdmin;
     }
     
-    public boolean updateDataKasir(String newNama, String newUsername, String newPassword, String Nama, String Username, String Password, int ID){
-        String query = "UPDATE kasir SET Nama = " + newNama
+    public boolean updateDataAdmin(String newNama, String newUsername, String newPassword, String Nama, String Username, String Password, int ID){
+        String query = "UPDATE admin SET Nama = " + newNama
              + ", Username = '" + newUsername + "', Password = '" + newPassword
-             + "' WHERE ID = " + ID;    
+             + "' WHERE ID_admin = " + ID;    
 
         try {
             Statement stm = con.createStatement();
@@ -73,8 +73,8 @@ public class ControllerDataKasir {
         }
     }
     
-    public boolean hapusDataKasir(int ID) {
-    String query = "DELETE FROM kasir WHERE ID = ?";
+    public boolean hapusDataAdmin(int ID) {
+    String query = "DELETE FROM admin WHERE ID_admin = ?";
     try {
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setInt(1, ID);
@@ -86,24 +86,23 @@ public class ControllerDataKasir {
         }
     }
     
-    public User cariDataKasir(String Nama){
-    User kasir = null;
-    String query = "SELECT * FROM kasir WHERE Nama = ?";
+    public User cariDataAdmin(String Nama){
+    User Admin = null;
+    String query = "SELECT * FROM admin WHERE Nama = ?";
     try {
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, Nama);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            kasir = new User() {};  // Create a new User instance only if a record is found
-            kasir.setID(rs.getInt("ID"));
-            kasir.setNama(rs.getString("Nama"));
-            kasir.setUsername(rs.getString("Username"));
-            kasir.setPassword(rs.getString("Password"));
+            Admin = new User() {};  // Create a new User instance only if a record is found
+            Admin.setID(rs.getInt("ID_admin"));
+            Admin.setNama(rs.getString("Nama"));
+            Admin.setUsername(rs.getString("Username"));
+            Admin.setPassword(rs.getString("Password"));
         }
     } catch (SQLException ex){
         System.out.println(ex.toString());
     }
-    return kasir;
+    return Admin;
 }
-
 }
