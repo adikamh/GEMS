@@ -1,4 +1,4 @@
-package com.gevam.gems.tubes.model;
+package org.itenas.oop.gevam.gems.tubes.model;
 
 /**
  *

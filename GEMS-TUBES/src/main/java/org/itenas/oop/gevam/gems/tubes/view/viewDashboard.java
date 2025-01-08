@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.gevam.gems.tubes.view;
+package org.itenas.oop.gevam.gems.tubes.view;
 
 /**
  *
@@ -69,7 +69,6 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Daftar Produk");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\naufa\\Documents\\TUGAS BESAR\\Logo1fix.png")); // NOI18N
         jLabel12.setText("Logo");
 
         jLabel13.setFont(new java.awt.Font("Castellar", 1, 14)); // NOI18N

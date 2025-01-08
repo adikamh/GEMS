@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.gevam.gems.tubes.view;
+package org.itenas.oop.gevam.gems.tubes.view;
 
-import com.gevam.gems.tubes.model.Barang;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.coobird.thumbnailator.Thumbnails;
-import com.gevam.gems.tubes.repository.ControllerBarang;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
 
 /**
  *
