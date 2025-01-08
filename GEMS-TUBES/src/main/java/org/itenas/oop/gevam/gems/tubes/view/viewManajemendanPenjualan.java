@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.gevam.gems.tubes.view;
+package org.itenas.oop.gevam.gems.tubes.view;
 
 /**
  *
  * @author naufa
  */
-public class viewKontrolProduk extends javax.swing.JFrame {
+public class viewManajemendanPenjualan extends javax.swing.JFrame {
 
     /**
-     * Creates new form viewKontrolProduk
+     * Creates new form viewManajemendanPenjualan
      */
-    public viewKontrolProduk() {
+    public viewManajemendanPenjualan() {
         initComponents();
     }
 
@@ -59,20 +59,20 @@ public class viewKontrolProduk extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(viewKontrolProduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewManajemendanPenjualan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(viewKontrolProduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewManajemendanPenjualan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(viewKontrolProduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewManajemendanPenjualan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(viewKontrolProduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewManajemendanPenjualan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new viewKontrolProduk().setVisible(true);
+                new viewManajemendanPenjualan().setVisible(true);
             }
         });
     }

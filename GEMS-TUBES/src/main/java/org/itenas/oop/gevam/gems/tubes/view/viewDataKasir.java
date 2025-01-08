@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.gevam.gems.tubes.view;
+package org.itenas.oop.gevam.gems.tubes.view;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -20,9 +20,9 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import com.gevam.gems.tubes.model.Barang;
-import com.gevam.gems.tubes.model.User;
-import com.gevam.gems.tubes.repository.ControllerDataKasir;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
+import org.itenas.oop.gevam.gems.tubes.model.User;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerDataKasir;
 import javax.swing.DefaultBoundedRangeModel;
 import net.coobird.thumbnailator.Thumbnails;
 

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.gevam.gems.tubes.view;
+package org.itenas.oop.gevam.gems.tubes.view;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import com.gevam.gems.tubes.model.Barang;
-import com.gevam.gems.tubes.repository.ControllerBarang;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
@@ -313,7 +313,7 @@ public class viewTambahProduk extends javax.swing.JFrame {
     private void btnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKirimActionPerformed
         // TODO add your handling code here:
        hasil = conBarang.tambahBarang(txtNama.getText(), txtJenis.getText(), Integer.parseInt(txtHarga.getText()), txtMerk.getText(), txtWarna.getText(), Integer.parseInt(txtGaransi.getText()), Integer.parseInt(txtStok.getText()));
-       String targetDirPath = "src/main/java/com/gevam/gems/tubes/image";
+       String targetDirPath = "src/main/java/org/itenas/oop/gevam/gems/tubes/image";
        File targetDir = new File(targetDirPath);
        if(!targetDir.exists()) {
            targetDir.mkdir();

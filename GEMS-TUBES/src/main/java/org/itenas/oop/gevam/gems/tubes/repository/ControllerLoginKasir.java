@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.gevam.gems.tubes.repository;
+package org.itenas.oop.gevam.gems.tubes.repository;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.gevam.gems.tubes.config.ConnectionManager;
+import org.itenas.oop.gevam.gems.tubes.config.ConnectionManager;
 
 /**
  *
