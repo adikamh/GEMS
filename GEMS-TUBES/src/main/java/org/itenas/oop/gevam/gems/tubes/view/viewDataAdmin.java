@@ -1,4 +1,6 @@
+
 package org.itenas.oop.gevam.gems.tubes.view;
+
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -16,13 +18,9 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-//<<<<<<< HEAD:GEMS-TUBES/src/main/java/org/itenas/oop/gevam/gems/tubes/view/viewDataAdmin.java
 import org.itenas.oop.gevam.gems.tubes.model.User;
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerDataAdmin;
-//=======
-//import com.gevam.gems.tubes.model.User;
-//import com.gevam.gems.tubes.repository.ControllerDataAdmin;
-//>>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849:GEMS-TUBES/src/main/java/com/gevam/gems/tubes/view/viewDataAdmin.java
+
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
