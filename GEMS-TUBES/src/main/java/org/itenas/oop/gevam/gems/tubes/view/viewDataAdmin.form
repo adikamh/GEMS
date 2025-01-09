@@ -60,9 +60,9 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtPasswordKasir" pref="97" max="32767" attributes="0"/>
-                                      <Component id="txtUsernameKasir" max="32767" attributes="0"/>
-                                      <Component id="txtNamaKasir" max="32767" attributes="0"/>
+                                      <Component id="txtPasswordAdmin" pref="97" max="32767" attributes="0"/>
+                                      <Component id="txtUsernameAdmin" max="32767" attributes="0"/>
+                                      <Component id="txtNamaAdmin" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnTambah" min="-2" max="-2" attributes="0"/>
@@ -120,18 +120,18 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNamaKasir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNamaAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnTambah" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtUsernameKasir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtUsernameAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtPasswordKasir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPasswordAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -171,7 +171,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DATA KASIR"/>
+            <Property name="text" type="java.lang.String" value="DATA ADMIN"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -182,12 +182,12 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tambah data kasir"/>
+            <Property name="text" type="java.lang.String" value="Menambah data Admin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNamaKasir">
+        <Component class="javax.swing.JTextField" name="txtNamaAdmin">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamaKasirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamaAdminActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -198,12 +198,12 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nama kasir"/>
+            <Property name="text" type="java.lang.String" value="Nama Admin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUsernameKasir">
+        <Component class="javax.swing.JTextField" name="txtUsernameAdmin">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameKasirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameAdminActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -217,9 +217,9 @@
             <Property name="text" type="java.lang.String" value="Username "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPasswordKasir">
+        <Component class="javax.swing.JTextField" name="txtPasswordAdmin">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordKasirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordAdminActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -296,12 +296,12 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tabelKasir">
+            <Component class="javax.swing.JTable" name="tabelAdmin">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
-                    <Column editable="true" title="Nama Kasir" type="java.lang.String"/>
+                    <Column editable="true" title="Nama Admin" type="java.lang.String"/>
                     <Column editable="true" title="Username" type="java.lang.String"/>
                     <Column editable="true" title="Password" type="java.lang.String"/>
                   </Table>
@@ -335,7 +335,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelKasirMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelAdminMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
