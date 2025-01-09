@@ -45,7 +45,7 @@ public class ControllerDataKasir {
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM kasir");
             while (rs.next()) {                
-                User usr = new User() {};
+                User usr = new User();
                 usr.setID(rs.getInt("ID"));
                 usr.setNama(rs.getString("Nama"));
                 usr.setUsername(rs.getString("Username"));
@@ -86,24 +86,20 @@ public class ControllerDataKasir {
         }
     }
     
-    public User cariDataKasir(String Nama){
-    User kasir = null;
-    String query = "SELECT * FROM kasir WHERE Nama = ?";
-    try {
-        PreparedStatement pstmt = con.prepareStatement(query);
-        pstmt.setString(1, Nama);
-        ResultSet rs = pstmt.executeQuery();
-        if (rs.next()) {
-            kasir = new User() {};  // Create a new User instance only if a record is found
-            kasir.setID(rs.getInt("ID"));
-            kasir.setNama(rs.getString("Nama"));
-            kasir.setUsername(rs.getString("Username"));
-            kasir.setPassword(rs.getString("Password"));
+    public User cariDataKasir(int ID){
+        User kasir = new User();
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM kasir WHERE ID = " + ID);
+            while (rs.next()){
+                kasir.setID(rs.getInt("ID"));
+                kasir.setNama(rs.getString("Nama"));
+                kasir.setUsername(rs.getString("Username"));
+                kasir.setPassword(rs.getString("Password"));
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.toString());
         }
-    } catch (SQLException ex){
-        System.out.println(ex.toString());
+        return kasir;
     }
-    return kasir;
-}
-
 }

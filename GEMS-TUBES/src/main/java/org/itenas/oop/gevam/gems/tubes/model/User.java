@@ -8,7 +8,7 @@ package org.itenas.oop.gevam.gems.tubes.model;
  *
  * @author ADIKA
  */
-public  abstract class User {
+public class User {
     private int ID;
     private String Username;
     private String Password;

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\config\ConnectionManager.java
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\model\Barang.java
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\model\User.java
@@ -14,16 +13,3 @@ Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\view
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\view\viewManajemendanPenjualan.java
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\view\viewMenuAdmin.java
 Z:\tugasBesar\GEMS\GEMS-TUBES\src\main\java\org\itenas\oop\gevam\gems\tubes\view\viewTambahProduk.java
-=======
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\config\ConnectionManager.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\model\Barang.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerBarang.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginAdmin.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\repository\ControllerLoginKasir.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewDaftarProduk.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewDashboard.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewKontrolProduk.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewLogin.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewManajemendanPenjualan.java
-C:\Users\naufa\Documents\TUGAS BESAR\Clone Git\GEMS\GEMS-TUBES\src\main\java\com\gevam\gems\tubes\view\viewTambahProduk.java
->>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849

@@ -20,8 +20,10 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import org.itenas.oop.gevam.gems.tubes.model.User;
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerDataKasir;
+import javax.swing.DefaultBoundedRangeModel;
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
@@ -342,11 +344,11 @@ public class viewDataKasir extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -402,9 +404,9 @@ public class viewDataKasir extends javax.swing.JFrame {
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
         try {
-        String Nama = txtCari.getText();
+        int ID = Integer.parseInt(txtCari.getText());
         
-        tampilkanDataKasir(Nama);
+        tampilkanDataKasir(ID);
         } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "ID harus berupa angka.");
         }
@@ -574,22 +576,25 @@ public class viewDataKasir extends javax.swing.JFrame {
         });
     }
     
-    private void tampilkanDataKasir(String Nama) {
-    User kasir = conKasir.cariDataKasir(Nama);
-    DefaultTableModel dtm = (DefaultTableModel) tabelKasir.getModel();
-    dtm.setRowCount(0);
-    
-    if (kasir != null) {
-        String[] data = new String[4];
-        data[0] = Integer.toString(kasir.getID());
-        data[1] = kasir.getNama();
-        data[2] = kasir.getUsername();
-        data[3] = kasir.getPassword();
-        dtm.addRow(data);
-    } else {
-        JOptionPane.showMessageDialog(null, "Kasir dengan Nama " + Nama + " tidak ditemukan.");
+    private void tampilkanDataKasir(int ID) {
+        
+        User kasir = new User();
+        kasir = conKasir.cariDataKasir(ID);
+        
+        DefaultTableModel dtm = (DefaultTableModel) tabelKasir.getModel();
+        dtm.setRowCount(0);
+        
+        if(kasir != null){
+            String[] data = new String[4];
+            data[0] = Integer.toString(kasir.getID());
+            data[1] = kasir.getNama();
+            data[2] = kasir.getPassword();
+            data[3] = kasir.getPassword();
+            dtm.addRow(data);
+        } else {
+            JOptionPane.showMessageDialog(null, "Barang dengan ID " + ID + " tidak ditemukan.");
+        }
     }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
