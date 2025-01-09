@@ -1,14 +1,16 @@
+package org.itenas.oop.gevam.gems.tubes.view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package org.itenas.oop.gevam.gems.tubes.view;
 
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerLoginAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerLoginAdmin;
 
 
 /**
@@ -37,7 +39,7 @@ public class viewLogin extends javax.swing.JFrame {
         int height = getHeight();
 
         // Mendefinisikan warna hijau dan biru untuk gradasi
-        Color color1 = new Color(149,227,183);  // Hijau
+        Color color1 = new Color(0,204,204);  // Hijau
         Color color2 = new Color(0,0,0); // Hitam
 
         // Membuat GradientPaint dari kiri ke kanan (horizontal)
@@ -51,6 +53,7 @@ public class viewLogin extends javax.swing.JFrame {
         g2d.fillRect(0, 0, width, height);
         }
     }
+    
 
     public void showPassword(){
         if(cbShowPass.isSelected()){
@@ -100,12 +103,12 @@ public class viewLogin extends javax.swing.JFrame {
         jPanel2.setToolTipText("");
         jPanel2.setMaximumSize(new java.awt.Dimension(50000, 50000));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Username");
 
         jLabel3.setBackground(new java.awt.Color(0, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Password");
 
@@ -159,12 +162,6 @@ public class viewLogin extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(0, 255, 204));
-
-=======
->>>>>>> b9cd287c9655dcee2447a4116efd553a104e8aec
         jLabel7.setFont(new java.awt.Font("Castellar", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 153, 102));
         jLabel7.setText("GADGET MANAGEMENT SYSTEM");
@@ -179,11 +176,10 @@ public class viewLogin extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 153, 102));
         jLabel5.setText("ALL CONTROL IS YOURS");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\naufa\\Documents\\TUGAS BESAR\\LOGO LOGIN - Copy.png")); // NOI18N
         jLabel8.setText("jLabel8");
 
         jLabel9.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("LOGIN");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -196,25 +192,6 @@ public class viewLogin extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD:GEMS-TUBES/src/main/java/org/itenas/oop/gevam/gems/tubes/view/viewLogin.java
-                    .addComponent(cbShowPass)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txt_Register)
-                        .addGap(69, 69, 69)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(180, 180, 180)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-=======
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(462, 462, 462)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -232,7 +209,6 @@ public class viewLogin extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGap(67, 67, 67)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
->>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849:GEMS-TUBES/src/main/java/com/gevam/gems/tubes/view/viewLogin.java
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(524, 524, 524)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -240,39 +216,21 @@ public class viewLogin extends javax.swing.JFrame {
                                 .addGap(602, 602, 602)
                                 .addComponent(jLabel5))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
+                                .addGap(28, 28, 28)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(456, 456, 456)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-<<<<<<< HEAD:GEMS-TUBES/src/main/java/org/itenas/oop/gevam/gems/tubes/view/viewLogin.java
-                .addGap(121, 121, 121)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(2, 2, 2)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbShowPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -299,7 +257,6 @@ public class viewLogin extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849:GEMS-TUBES/src/main/java/com/gevam/gems/tubes/view/viewLogin.java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addGap(49, 49, 49)
@@ -345,7 +302,6 @@ public class viewLogin extends javax.swing.JFrame {
 
         if(stat == 1) {
             JOptionPane.showMessageDialog(null, "Login Berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new viewTambahProduk().setVisible(true);
             dispose();
         }else{
             JOptionPane.showMessageDialog(null,"Username atau Password yang anda masukan salah","Pesan",JOptionPane.INFORMATION_MESSAGE);
@@ -407,22 +363,7 @@ public class viewLogin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(viewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
