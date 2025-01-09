@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+<<<<<<< HEAD:GEMS-TUBES/src/main/java/org/itenas/oop/gevam/gems/tubes/repository/ControllerDataAdmin.java
 package org.itenas.oop.gevam.gems.tubes.repository;
+=======
+package com.gevam.gems.tubes.repository;
+>>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849:GEMS-TUBES/src/main/java/com/gevam/gems/tubes/repository/ControllerDataAdmin.java
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +16,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+<<<<<<< HEAD:GEMS-TUBES/src/main/java/org/itenas/oop/gevam/gems/tubes/repository/ControllerDataAdmin.java
 import org.itenas.oop.gevam.gems.tubes.model.User;
 import org.itenas.oop.gevam.gems.tubes.config.ConnectionManager;
+=======
+import com.gevam.gems.tubes.model.User;
+import com.gevam.gems.tubes.config.ConnectionManager;
+>>>>>>> 9cd33ee3f7530504b57075138557e429b1de5849:GEMS-TUBES/src/main/java/com/gevam/gems/tubes/repository/ControllerDataAdmin.java
 
 /**
  *
