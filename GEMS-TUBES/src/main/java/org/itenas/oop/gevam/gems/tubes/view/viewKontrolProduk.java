@@ -4,7 +4,7 @@
  */
 package org.itenas.oop.gevam.gems.tubes.view;
 
-import com.gevam.gems.tubes.model.Barang;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.coobird.thumbnailator.Thumbnails;
-import com.gevam.gems.tubes.repository.ControllerBarang;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
 
 /**
  *
