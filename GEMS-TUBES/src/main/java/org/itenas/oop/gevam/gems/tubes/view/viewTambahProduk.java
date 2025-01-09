@@ -70,7 +70,7 @@ public class viewTambahProduk extends javax.swing.JFrame {
         txtWarna.setText("");
         txtGaransi.setText("");
         txtStok.setText("");
-        lbI_image.setIcon(null);
+        //lbI_image
     }
     
 
@@ -388,7 +388,7 @@ public class viewTambahProduk extends javax.swing.JFrame {
                     bos.write(buf,0,readNum);
                 }
                 mobilIcon = new ImageIcon(thumbnail);
-                lbI_image.setIcon(mobilIcon);
+                //lbI_image.setIcon(mobilIcon);
                 barangImage = bos.toByteArray();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error processing image: " + e.getMessage());
