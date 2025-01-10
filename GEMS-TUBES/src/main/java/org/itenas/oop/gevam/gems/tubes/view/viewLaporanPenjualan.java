@@ -4,6 +4,15 @@
  */
 package org.itenas.oop.gevam.gems.tubes.view;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
+import org.itenas.oop.gevam.gems.tubes.config.ConnectionManager;
+
 /**
  *
  * @author user
@@ -29,7 +38,7 @@ public class viewLaporanPenjualan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelLaporanPenjualan = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,18 +58,18 @@ public class viewLaporanPenjualan extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelLaporanPenjualan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "ID Barang", "Harga", "Total Harga", "Stok Terjual"
+                "ID", "ID Barang", "Nama Barang", "Harga", "Total Harga", "Stok Terjual", "Stok Tersisa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelLaporanPenjualan);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laptop", "Handphone", "Virtual Reality", "Smart Watch", "Headset" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,22 +85,22 @@ public class viewLaporanPenjualan extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 143, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,7 +118,69 @@ public class viewLaporanPenjualan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+    DefaultTableModel model = (DefaultTableModel) tabelLaporanPenjualan.getModel();
+    model.setRowCount(0);  // Remove all rows
+
+    // Initialize database connection objects
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    try {
+        // Establish database connection via ConnectionManager
+        ConnectionManager conMan = new ConnectionManager();
+        con = conMan.logOn();
+
+        // Define the updated SQL query with stok_terjual and stok_tersisa
+        String sql = "SELECT b.id, b.namaBarang, b.harga, " +
+                     "(b.stok - COALESCE(SUM(d.jumlah), 0)) AS stok_tersisa, " +  // Sold stock
+                     "(b.stok - (b.stok - COALESCE(SUM(d.jumlah), 0))) AS stok_terjual, " +  // Remaining stock
+                     "SUM(b.harga * d.jumlah) AS total_harga " +
+                     "FROM barang b " +
+                     "LEFT JOIN detail_transaksi d ON b.id = d.id " +
+                     "LEFT JOIN transaksi t ON d.id_transaksi = t.id_transaksi " +
+                     "WHERE b.jenis = ? " +
+                     "GROUP BY b.id, b.namaBarang, b.harga, b.stok";
+
+        // Prepare the statement with the selected category
+        ps = con.prepareStatement(sql);
+        ps.setString(1, (String) jComboBox1.getSelectedItem());  // Set the category as parameter
+
+        // Execute query and retrieve results
+        rs = ps.executeQuery();
+
+        // Create a NumberFormat instance for formatting currency
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID")); // Locale for Indonesia (IDR)
+
+        // Check if results are returned and populate the table
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String namaBarang = rs.getString("namaBarang");
+            double harga = rs.getDouble("harga");
+            int stokTerjual = rs.getInt("stok_terjual");
+            int stokTersisa = rs.getInt("stok_tersisa");  // Get the remaining stock
+            double totalHarga = rs.getDouble("total_harga");
+
+            // Format the harga and total_harga to the desired currency format
+            String formattedHarga = currencyFormat.format(harga); // Format harga
+            String formattedTotalHarga = currencyFormat.format(totalHarga); // Format total_harga
+
+            // Add row to table model with formatted harga and total_harga
+            model.addRow(new Object[]{id, namaBarang, formattedHarga, formattedTotalHarga, stokTerjual, stokTersisa});
+        }
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();  // Print any SQL exceptions for debugging
+    } finally {
+        try {
+            // Close resources in the finally block
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();  // Print any exceptions while closing resources
+        }
+    }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
@@ -152,6 +223,6 @@ public class viewLaporanPenjualan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelLaporanPenjualan;
     // End of variables declaration//GEN-END:variables
 }
