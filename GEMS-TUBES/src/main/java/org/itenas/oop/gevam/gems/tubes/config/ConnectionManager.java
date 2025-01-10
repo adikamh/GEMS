@@ -18,7 +18,7 @@ public class ConnectionManager {
     private String url = "jdbc:mysql://localhost:3306/gems"; // mys1l kalian
     private String Driver = "com.mysql.cj.jdbc.Driver"; // driver kalian
     private String Username = "root";   // id kalian
-    private String Password = "basdat24"; //pw kalian
+    private String Password = "basdat2024"; //pw kalian
     
     public Connection logOn(){
         if(koneksi == null) {
