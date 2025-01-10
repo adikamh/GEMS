@@ -4,6 +4,15 @@
  */
 package org.itenas.oop.gevam.gems.tubes.view;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import org.itenas.oop.gevam.gems.tubes.config.ConnectionManager;
+
 /**
  *
  * @author ADIKA
@@ -28,7 +37,7 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelLaporanTransaksi = new javax.swing.JTable();
@@ -39,7 +48,9 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Kembali");
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+
+        btnBack.setText("Kembali");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -47,14 +58,14 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jButton2)
+                .addComponent(btnBack)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnBack)
                 .addContainerGap())
         );
 
@@ -81,11 +92,35 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tabelLaporanTransaksi.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelLaporanTransaksiAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(tabelLaporanTransaksi);
 
         txtCari.setText("Cari berdasarkan ID:");
+        txtCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCariMouseClicked(evt);
+            }
+        });
+        txtCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCariKeyPressed(evt);
+            }
+        });
 
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,6 +178,29 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tabelLaporanTransaksiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelLaporanTransaksiAncestorAdded
+        // TODO add your handling code here:
+        tampilkanSemuaTransaksi();
+    }//GEN-LAST:event_tabelLaporanTransaksiAncestorAdded
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        // TODO add your handling code here:
+        btnCari.addActionListener(e -> cariTransaksiByNama());
+
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void txtCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCariMouseClicked
+        // TODO add your handling code here:
+        txtCari.setText("");
+    }//GEN-LAST:event_txtCariMouseClicked
+
+    private void txtCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            cariTransaksiByNama();
+        }
+    }//GEN-LAST:event_txtCariKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -177,10 +235,69 @@ public class viewLaporanTransaksi extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void tampilkanSemuaTransaksi() {
+    DefaultTableModel model = (DefaultTableModel) tabelLaporanTransaksi.getModel();
+    model.setRowCount(0);  // Menghapus data lama
+    String query = "SELECT * FROM transaksi";
+    
+    try {
+        ConnectionManager conMan = new ConnectionManager();
+        Connection con = conMan.logOn();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        while (rs.next()) {
+            int idTransaksi = rs.getInt("id_transaksi");
+            String namaCustomer = rs.getString("nama_customer");
+            double totalHarga = rs.getDouble("total_transaksi");
+            String tanggalTransaksi = rs.getString("tanggal");
+            
+            model.addRow(new Object[]{idTransaksi, namaCustomer, totalHarga, tanggalTransaksi});
+        }
+        conMan.logOff();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    
+    private void cariTransaksiByNama() {
+    DefaultTableModel model = (DefaultTableModel) tabelLaporanTransaksi.getModel();
+    model.setRowCount(0);  // Menghapus data lama
+    String namaCustomer = txtCari.getText().trim();
+    
+    if (namaCustomer.isEmpty()) {
+        tampilkanSemuaTransaksi();  // Menampilkan semua jika pencarian kosong
+        return;
+    }
+    
+    String query = "SELECT * FROM transaksi WHERE nama_customer LIKE ?";
+    try {
+        ConnectionManager conMan = new ConnectionManager();
+        Connection con = conMan.logOn();
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1, "%" + namaCustomer + "%");
+        ResultSet rs = stmt.executeQuery();
+        
+        while (rs.next()) {
+            int idTransaksi = rs.getInt("id_transaksi");
+            String nama = rs.getString("nama_customer");
+            double totalHarga = rs.getDouble("total_transaksi");
+            String tanggalTransaksi = rs.getString("tanggal");
+            
+            model.addRow(new Object[]{idTransaksi, nama, totalHarga, tanggalTransaksi});
+        }
+        conMan.logOff();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCari;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
