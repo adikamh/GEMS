@@ -29,7 +29,8 @@ public class ControllerLaporanTransaksi {
 
    public void tampilkanSemuaTransaksi() {
         String query = "SELECT * FROM transaksi";
-        try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+        try (Statement stmt = con.createStatement(); 
+                ResultSet rs = stmt.executeQuery(query)) {
             System.out.println("Daftar Transaksi:");
             while (rs.next()) {
                 int idTransaksi = rs.getInt("id_transaksi");
