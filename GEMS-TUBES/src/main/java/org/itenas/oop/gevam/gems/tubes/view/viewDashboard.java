@@ -29,11 +29,13 @@ public class viewDashboard extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblKontrolProduk = new javax.swing.JLabel();
+        lblLaporanTransaksi = new javax.swing.JLabel();
+        lblDaftarProduk = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        lblLaporanPenjualan = new javax.swing.JLabel();
+        lblManajemenKasir = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,23 +61,56 @@ public class viewDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Kontrol Produk");
+        lblKontrolProduk.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        lblKontrolProduk.setForeground(new java.awt.Color(0, 0, 0));
+        lblKontrolProduk.setText("Kontrol Produk");
+        lblKontrolProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblKontrolProdukMouseClicked(evt);
+            }
+        });
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Manajemen dan Penjualan ");
+        lblLaporanTransaksi.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        lblLaporanTransaksi.setForeground(new java.awt.Color(0, 0, 0));
+        lblLaporanTransaksi.setText("Laporan Transaksi");
+        lblLaporanTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLaporanTransaksiMouseClicked(evt);
+            }
+        });
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Daftar Produk");
+        lblDaftarProduk.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        lblDaftarProduk.setForeground(new java.awt.Color(0, 0, 0));
+        lblDaftarProduk.setText("Daftar Produk");
+        lblDaftarProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDaftarProdukMouseClicked(evt);
+            }
+        });
 
         jLabel12.setText("Logo");
 
         jLabel13.setFont(new java.awt.Font("Castellar", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 153, 102));
         jLabel13.setText("ADMIN");
+
+        lblLaporanPenjualan.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        lblLaporanPenjualan.setForeground(new java.awt.Color(0, 0, 0));
+        lblLaporanPenjualan.setText("Laporan Penjualan");
+        lblLaporanPenjualan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLaporanPenjualanMouseClicked(evt);
+            }
+        });
+
+        lblManajemenKasir.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        lblManajemenKasir.setForeground(new java.awt.Color(0, 0, 0));
+        lblManajemenKasir.setText("Manajemen Kasir");
+        lblManajemenKasir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblManajemenKasirMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -85,14 +120,16 @@ public class viewDashboard extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(lblDaftarProduk)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
+                    .addComponent(lblLaporanTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(lblLaporanPenjualan, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(lblManajemenKasir, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
+                        .addComponent(lblKontrolProduk))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,11 +147,15 @@ public class viewDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addGap(39, 39, 39)
-                .addComponent(jLabel9)
+                .addComponent(lblKontrolProduk)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
+                .addComponent(lblLaporanTransaksi)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                .addComponent(lblLaporanPenjualan)
+                .addGap(18, 18, 18)
+                .addComponent(lblManajemenKasir)
+                .addGap(18, 18, 18)
+                .addComponent(lblDaftarProduk)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -350,6 +391,36 @@ public class viewDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void lblLaporanTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLaporanTransaksiMouseClicked
+        // TODO add your handling code here:
+        new viewLaporanTransaksi().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblLaporanTransaksiMouseClicked
+
+    private void lblKontrolProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKontrolProdukMouseClicked
+        // TODO add your handling code here:
+        new viewKontrolProduk().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblKontrolProdukMouseClicked
+
+    private void lblDaftarProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDaftarProdukMouseClicked
+        // TODO add your handling code here:
+        new viewDaftarProduk().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblDaftarProdukMouseClicked
+
+    private void lblLaporanPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLaporanPenjualanMouseClicked
+        // TODO add your handling code here:
+        new viewLaporanPenjualan().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblLaporanPenjualanMouseClicked
+
+    private void lblManajemenKasirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblManajemenKasirMouseClicked
+        // TODO add your handling code here:
+        new viewDataKasir().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblManajemenKasirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -388,8 +459,6 @@ public class viewDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -399,7 +468,6 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -411,5 +479,10 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblDaftarProduk;
+    private javax.swing.JLabel lblKontrolProduk;
+    private javax.swing.JLabel lblLaporanPenjualan;
+    private javax.swing.JLabel lblLaporanTransaksi;
+    private javax.swing.JLabel lblManajemenKasir;
     // End of variables declaration//GEN-END:variables
 }
