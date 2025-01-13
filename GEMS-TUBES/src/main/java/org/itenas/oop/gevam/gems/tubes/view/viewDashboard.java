@@ -11,6 +11,13 @@ import java.awt.Graphics2D;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
+import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
 
 /**
  *
@@ -18,17 +25,57 @@ import java.awt.event.KeyEvent;
  */
 public class viewDashboard extends javax.swing.JFrame {
 
+    Boolean hasil;
+    ControllerBarang conBarang = new ControllerBarang();
+    private DefaultTableModel model;
+    
     /**
      * Creates new form viewDashboard
      */
     public viewDashboard() {
         initComponents();
-        setOpaque(false);
-        setBackground(new Color(0,204,204));
-    }
+           setLocationRelativeTo(null);
+        model = new DefaultTableModel();
+        
+        tabelBarang.setModel(model);
 
-    private void setOpaque(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        model.addColumn("Id");
+        model.addColumn("nama produk");
+        model.addColumn("harga");
+        model.addColumn("stok");
+        getData();
+    }
+    
+     public void getData() {
+        DefaultTableModel dtm = (DefaultTableModel) tabelBarang.getModel();
+
+        dtm.setRowCount(0);
+
+        java.util.List<Barang> listBarang = conBarang.tampilkanBarangDashBoard();
+        String[] data = new String[4];
+        for (Barang newBarang : listBarang) {
+            data[0] = Integer.toString(newBarang.getId());
+            data[1] = newBarang.getNamaBarang();
+            data[2] = Integer.toString(newBarang.getHarga());
+            data[3] = Integer.toString(newBarang.getStok());
+            dtm.addRow(data);
+        }
+    }
+     
+     public void getDataSearch(String namaBarang) {
+        DefaultTableModel dtm = (DefaultTableModel) tabelBarang.getModel();
+
+        dtm.setRowCount(0);
+
+        java.util.List<Barang> listBarang = conBarang.tampilkanBarangDashBoardSearch(namaBarang);
+        String[] data = new String[4];
+        for (Barang newBarang : listBarang) {
+            data[0] = Integer.toString(newBarang.getId());
+            data[1] = newBarang.getNamaBarang();
+            data[2] = Integer.toString(newBarang.getHarga());
+            data[3] = Integer.toString(newBarang.getStok());
+            dtm.addRow(data);
+        }
     }
 
     private static class JPanel2 {
@@ -47,32 +94,31 @@ public class viewDashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         kontrolProduk = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        btnCari = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblStok = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblPengunjung = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelBarang = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -106,24 +152,20 @@ public class viewDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Manajemen dan Penjualan ");
-
         jLabel11.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Daftar Produk");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\naufa\\Documents\\TUGAS BESAR\\Logo1fix.png")); // NOI18N
         jLabel12.setText("Logo");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 153, 102));
         jLabel13.setText("Admin");
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Log Out");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -131,6 +173,17 @@ public class viewDashboard extends javax.swing.JFrame {
 
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Ikon");
+
+        jComboBox1.setBackground(new java.awt.Color(145, 221, 207));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manajemen dan Penjualan", "Laporan Transaksi", "Laporan Penjualan", "Daftar Produk" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,18 +197,21 @@ public class viewDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9))
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addComponent(kontrolProduk))))
-                .addGap(0, 11, Short.MAX_VALUE))
+                            .addComponent(kontrolProduk)
+                            .addComponent(jLabel11))))
+                .addGap(0, 76, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -167,13 +223,11 @@ public class viewDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(24, 24, 24)
                 .addComponent(kontrolProduk)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel9))
@@ -186,24 +240,34 @@ public class viewDashboard extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField1.setBackground(new java.awt.Color(246, 244, 240));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Search");
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setBackground(new java.awt.Color(246, 244, 240));
+        txtSearch.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(0, 0, 0));
+        txtSearch.setText("Search");
+        txtSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSearchMouseClicked(evt);
+            }
+        });
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(246, 244, 240));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Cari");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCari.setBackground(new java.awt.Color(246, 244, 240));
+        btnCari.setForeground(new java.awt.Color(0, 0, 0));
+        btnCari.setText("Cari");
+        btnCari.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCariActionPerformed(evt);
             }
         });
 
@@ -219,9 +283,9 @@ public class viewDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(115, 115, 115))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(358, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -229,8 +293,8 @@ public class viewDashboard extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCari)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(28, 28, 28))
@@ -238,13 +302,31 @@ public class viewDashboard extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 221));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanel4AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Jumlah Stok");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setText("0");
+        lblStok.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblStok.setText("0");
+        lblStok.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblStokAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel17.setText("Ikon");
 
@@ -252,26 +334,25 @@ public class viewDashboard extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(99, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(68, 68, 68))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel6))
-                        .addGap(96, 96, 96))))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblStok)
+                    .addComponent(jLabel17))
+                .addGap(115, 115, 115))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
+                .addComponent(lblStok, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -284,8 +365,17 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Jumlah Pengunjung");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel7.setText("0");
+        lblPengunjung.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPengunjung.setText("0");
+        lblPengunjung.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblPengunjungAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel18.setText("Ikon");
 
@@ -294,29 +384,28 @@ public class viewDashboard extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(97, 97, 97))
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblPengunjung)
+                        .addGap(108, 108, 108))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(44, 44, 44))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(60, 60, 60))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(lblPengunjung)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(13, 13, 13))
+                .addGap(19, 19, 19))
         );
 
         jPanel6.setBackground(new java.awt.Color(79, 117, 255));
@@ -326,8 +415,17 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Jumlah Admin");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setText("0");
+        lblAdmin.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblAdmin.setText("0");
+        lblAdmin.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblAdminAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel19.setText("Ikon");
 
@@ -337,35 +435,34 @@ public class viewDashboard extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(90, 90, 90))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(lblAdmin)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
+                .addComponent(lblAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jScrollPane2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTable1.setBackground(new java.awt.Color(246, 244, 240));
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelBarang.setBackground(new java.awt.Color(255, 255, 255));
+        tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -376,9 +473,9 @@ public class viewDashboard extends javax.swing.JFrame {
                 "ID", "Nama", "Harga", "Stok"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tabelBarang);
 
-        jScrollPane2.setViewportView(jScrollPane1);
+        jScrollPane2.setViewportView(jScrollPane3);
 
         jLabel15.setText("jLabel15");
 
@@ -393,22 +490,27 @@ public class viewDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,7 +537,7 @@ public class viewDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
         );
 
         pack();
@@ -446,13 +548,20 @@ public class viewDashboard extends javax.swing.JFrame {
     protected void paintChildren(){
         
     }*/
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        getDataSearch(txtSearch.getText());
+        
+        if (txtSearch.getText().isEmpty()) {
+            getData();
+        }
+        
+    }//GEN-LAST:event_btnCariActionPerformed
 
     private void kontrolProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kontrolProdukMouseClicked
         // TODO add your handling code here:
@@ -461,9 +570,132 @@ public class viewDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_kontrolProdukMouseClicked
 
     private void kontrolProdukAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_kontrolProdukAncestorAdded
-        // TODO add your handling code here:
-       
+        // TODO add your handling code here:  
     }//GEN-LAST:event_kontrolProdukAncestorAdded
+
+    private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
+        // TODO add your handling code here:
+        txtSearch.setText("" );
+    }//GEN-LAST:event_txtSearchMouseClicked
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            getDataSearch(txtSearch.getText());
+            
+            if (txtSearch.getText().isEmpty()) {
+            getData();
+        }
+        }
+    }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+         // TODO add your handling code here:
+         switch (jComboBox1.getSelectedIndex()) {
+            case 0:
+                break;
+            
+             case 1:
+                new viewLaporanTransaksi().setVisible(true);
+               dispose();
+                break;
+                
+             case 2:
+                new viewLaporanPenjualan().setVisible(true);
+                dispose();
+                break;
+                
+             case 3:
+                new viewDataKasir().setVisible(true);
+                dispose();
+                break;
+                
+            default:
+                throw new AssertionError();
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        new viewDaftarProduk().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void lblStokAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblStokAncestorAdded
+        // TODO add your handling code here:
+         String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
+        String user = "root"; // Ganti dengan username MySQL Anda
+        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            // Query untuk menghitung jumlah data
+            String query = "SELECT sum(stok) as a FROM barang";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Ambil hasil COUNT
+                int count = resultSet.getInt("a");
+                // Tampilkan di JLabel
+                lblStok.setText("" + count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_lblStokAncestorAdded
+
+    private void lblAdminAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblAdminAncestorAdded
+    String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
+        String user = "root"; // Ganti dengan username MySQL Anda
+        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            // Query untuk menghitung jumlah data
+            String query = "SELECT count(Username) as c  FROM admin";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Ambil hasil COUNT
+                int count = resultSet.getInt("c");
+                // Tampilkan di JLabel
+                lblAdmin.setText("" + count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_lblAdminAncestorAdded
+    
+    private void jPanel4AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel4AncestorAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel4AncestorAdded
+
+    private void lblPengunjungAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblPengunjungAncestorAdded
+        // TODO add your handling code here:
+        String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
+        String user = "root"; // Ganti dengan username MySQL Anda
+        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            // Query untuk menghitung jumlah data
+            String query = "SELECT count(nama_customer) as b  FROM transaksi ";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Ambil hasil COUNT
+                int count = resultSet.getInt("b");
+                // Tampilkan di JLabel
+                lblPengunjung.setText("" + count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_lblPengunjungAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -507,14 +739,13 @@ public class viewDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCari;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -524,9 +755,6 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
@@ -536,10 +764,13 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel kontrolProduk;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblPengunjung;
+    private javax.swing.JLabel lblStok;
+    private javax.swing.JTable tabelBarang;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
