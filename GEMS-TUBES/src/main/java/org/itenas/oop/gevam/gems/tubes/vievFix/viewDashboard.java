@@ -50,7 +50,7 @@ public class viewDashboard extends javax.swing.JFrame {
             dashboardAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardAdmin2Layout.createSequentialGroup()
                 .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 787, Short.MAX_VALUE))
+                .addGap(0, 766, Short.MAX_VALUE))
         );
         dashboardAdmin2Layout.setVerticalGroup(
             dashboardAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

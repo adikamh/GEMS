@@ -241,6 +241,48 @@ public class ControllerBarang {
         return listBarang;
     }
     
+    public List<Barang> tampilkanBarangDashBoard(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT id,namaBarang,harga,stok FROM barang");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setId(rs.getInt("id"));
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                barang.setHarga(rs.getInt("harga"));
+                barang.setStok(rs.getInt("stok"));
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
     
-    
+    public List<Barang> tampilkanBarangDashBoardSearch(String namaBarang){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT id,namaBarang,harga,stok FROM barang where namaBarang like '%"+ namaBarang + "%'");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setId(rs.getInt("id"));
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                barang.setHarga(rs.getInt("harga"));
+                barang.setStok(rs.getInt("stok"));
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+
 }
