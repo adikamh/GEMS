@@ -1,11 +1,7 @@
+
 package org.itenas.oop.gevam.gems.tubes.view;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-import org.itenas.oop.gevam.gems.tubes.repository.ControllerLoginAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
@@ -176,6 +172,7 @@ public class viewLogin extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 153, 102));
         jLabel5.setText("ALL CONTROL IS YOURS");
 
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\naufa\\Documents\\TUGAS BESAR\\LOGO LOGIN - Copy.png")); // NOI18N
         jLabel8.setText("jLabel8");
 
         jLabel9.setFont(new java.awt.Font("Castellar", 1, 36)); // NOI18N
@@ -335,8 +332,9 @@ public class viewLogin extends javax.swing.JFrame {
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
     if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         txtPasswordKeyPressed(null);
+        }
     }//GEN-LAST:event_txtPasswordKeyPressed
-    }
+ 
     /**
      * @param args the command line arguments
      */
@@ -373,9 +371,9 @@ public class viewLogin extends javax.swing.JFrame {
                 frame.setSize(400, 300); // Ukuran window
                 frame.add(new viewLogin()); // Menambahkan panel viewLogin
                 frame.setVisible(true); // Menampilkan frame
-            }
-        });
-    }
+                }
+            });   
+         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
