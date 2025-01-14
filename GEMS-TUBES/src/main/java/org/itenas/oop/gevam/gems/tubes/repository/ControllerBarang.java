@@ -101,7 +101,7 @@ public class ControllerBarang {
         List<Barang> listBarang= new ArrayList<Barang>();
         try{
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM barang  where namaBarang = '" + namaBarang + "'");
+            ResultSet rs = stm.executeQuery("SELECT * FROM barang  where namaBarang like '%" + namaBarang + "%'");
             while (rs.next()){
                 Barang barang = new Barang();
                 barang.setId(rs.getInt("id"));

@@ -4,8 +4,8 @@
  */
 package org.itenas.oop.gevam.gems.tubes.view;
 
-
 import java.awt.event.KeyEvent;
+import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -22,9 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import net.coobird.thumbnailator.Thumbnails;
-import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
-
 
 /**
  *
@@ -114,6 +112,7 @@ public class viewKontrolProduk extends javax.swing.JFrame {
         txtWarna.setEditable(true);
         txtGaransi.setEditable(true);
         txtStok.setEditable(true);
+        lbl_image.setIcon(null);
     }
     
 
@@ -127,6 +126,7 @@ public class viewKontrolProduk extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -153,8 +153,11 @@ public class viewKontrolProduk extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         image_pane = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
-        label_image = new javax.swing.JLabel();
+        lbl_image = new javax.swing.JLabel();
+        btn_upload_image = new javax.swing.JButton();
+        btnKirim = new javax.swing.JButton();
+        txt_image_path = new javax.swing.JTextField();
+        txt_id = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,6 +169,13 @@ public class viewKontrolProduk extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,10 +225,9 @@ public class viewKontrolProduk extends javax.swing.JFrame {
         });
 
         btnDelete.setText("DELETE");
-
-        txtNamaBarang.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaBarangActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -258,7 +267,7 @@ public class viewKontrolProduk extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Kontrol Produk");
+        jLabel8.setText("KONTROL PRODUK");
 
         btnLogout.setText("LOG OUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -274,23 +283,39 @@ public class viewKontrolProduk extends javax.swing.JFrame {
             }
         });
 
+        image_pane.setLayer(lbl_image, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout image_paneLayout = new javax.swing.GroupLayout(image_pane);
         image_pane.setLayout(image_paneLayout);
         image_paneLayout.setHorizontalGroup(
             image_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGroup(image_paneLayout.createSequentialGroup()
+                .addComponent(lbl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addContainerGap())
         );
         image_paneLayout.setVerticalGroup(
             image_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
+            .addGroup(image_paneLayout.createSequentialGroup()
+                .addComponent(lbl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jButton1.setText("UPLOAD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_upload_image.setText("UPLOAD");
+        btn_upload_image.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_upload_imageActionPerformed(evt);
             }
         });
+
+        btnKirim.setText("KIRIM\n");
+        btnKirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKirimActionPerformed(evt);
+            }
+        });
+
+        txt_id.setBackground(new java.awt.Color(149, 227, 183));
+        txt_id.setBorder(null);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -298,6 +323,12 @@ public class viewKontrolProduk extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnKirim)
+                        .addGap(26, 26, 26))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,77 +336,68 @@ public class viewKontrolProduk extends javax.swing.JFrame {
                             .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtHarga, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                        .addComponent(txtMerk)
+                                        .addComponent(txtJenis)
+                                        .addComponent(txtNamaBarang)
+                                        .addComponent(jLabel2)
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
+                                        .addComponent(jLabel5)
+                                        .addComponent(txt_id))
                                     .addComponent(txtWarna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtGaransi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel6)
-                                .addComponent(jLabel7))
-                            .addComponent(btnLogout)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)))
-                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnClear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addGap(156, 156, 156)
-                        .addComponent(jButton1))
+                        .addComponent(btnDelete))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(image_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(image_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_upload_image)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(label_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch))
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(image_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addContainerGap()
+                        .addComponent(btnLogout))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
@@ -398,39 +420,52 @@ public class viewKontrolProduk extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLogout)
-                        .addGap(105, 105, 105))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnKirim)
+                            .addComponent(btnClear))
+                        .addGap(10, 10, 10))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(178, 178, 178)
+                        .addComponent(image_pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnClear)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnDelete)
-                            .addComponent(jButton1))
-                        .addGap(111, 111, 111))))
+                            .addComponent(btn_upload_image)
+                            .addComponent(txt_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearch))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete))
+                .addGap(23, 23, 23)
+                .addComponent(btnLogout)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 641, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 889, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,6 +490,27 @@ public class viewKontrolProduk extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+          int i = tabelBarang.getSelectedRow();
+
+        if (i == -1) {
+            JOptionPane.showMessageDialog(btnUpdate, "Harap pilih salah satu data", "warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int id = Integer.parseInt(tabelBarang.getModel().getValueAt(i, 0).toString());
+        String oldNama = tabelBarang.getModel().getValueAt(i, 1).toString();
+        String jenis = model.getValueAt(i, 2).toString();
+        int harga = Integer.parseInt(model.getValueAt(i, 3).toString());
+        String merk = model.getValueAt(i, 4).toString();
+        String warna = model.getValueAt(i, 5).toString();
+         int garansi = Integer.parseInt(model.getValueAt(i, 6).toString());
+         int stok = Integer.parseInt(model.getValueAt(i, 7).toString());
+        
+
+        conBarang.updateBarang(txtNamaBarang.getText(),oldNama,txtJenis.getText(),Integer.parseInt(txtHarga.getText()),txtMerk.getText(),txtWarna.getText(),Integer.parseInt(txtGaransi.getText(),Integer.parseInt(txtStok.getText())),Integer.parseInt(txt_id.getText()),id);
+        JOptionPane.showMessageDialog(btnUpdate, "Data berhasil diUpdate");
+        getData();
+        clearData();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -470,28 +526,162 @@ public class viewKontrolProduk extends javax.swing.JFrame {
 
     private void tabelBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelBarangMouseClicked
         // TODO add your handling code here:
+        int i = tabelBarang.getSelectedRow();
 
+        TableModel model = tabelBarang.getModel();
+        String namaBarang = model.getValueAt(i, 1).toString();
+        String jenis = model.getValueAt(i, 2).toString();
+        int harga = Integer.parseInt(model.getValueAt(i, 3).toString());
+        String merk = model.getValueAt(i, 4).toString();
+        String warna = model.getValueAt(i, 5).toString();
+         int garansi = Integer.parseInt(model.getValueAt(i, 6).toString());
+         int stok = Integer.parseInt(model.getValueAt(i, 7).toString());
+          
+        txtNamaBarang.setText(namaBarang);
+        txtHarga.setText(harga + "");
+        txtJenis.setText(jenis);
+        txtGaransi.setText(garansi + "");
+        txtMerk.setText(merk);
+        txtStok.setText(stok + "");
+        txtWarna.setText(warna);
+      
+        
+        
+        try {
+            File imageFile = new File("src/main/java/org/itenas/oop/gevam/gems/tubes/image/"+namaBarang+".jpeg");
+            
+            if (imageFile != null) {
+                BufferedImage originalImage = ImageIO.read(imageFile);
+                BufferedImage resizedImage  = Thumbnails.of(originalImage).size(270,420).asBufferedImage();
+                
+                 ImageIcon icon = new ImageIcon(resizedImage);
+            lbl_image.setIcon(icon);
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(resizedImage, "jpeg", baos);
+            byte[] imageData = baos.toByteArray();
+            
+            }else{
+                lbl_image.setIcon(null);
+                JOptionPane.showMessageDialog(null, "Gambar tidak ditemukan untuk data " + namaBarang);
+            }
+             
+        } catch (Exception e) {
+            lbl_image.setIcon(null);
+            JOptionPane.showMessageDialog(null, "Error saat memuat gambar " + e.getMessage());
+        }
     }//GEN-LAST:event_tabelBarangMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_upload_imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upload_imageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtNamaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaBarangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaBarangActionPerformed
+         JFileChooser fileChooser = new JFileChooser();
+        String namaFileBarang = null;
+        ImageIcon barangIcon = null;
+        
+        int returnValue = fileChooser.showOpenDialog(null);
+        
+        if (returnValue == JFileChooser.APPROVE_OPTION){
+        File file = fileChooser.getSelectedFile();
+        namaFileBarang = file.getAbsolutePath();
+        txt_image_path.setText(namaFileBarang);
+        
+            try {
+                File image = new File(namaFileBarang);
+                BufferedImage thumbnail = Thumbnails.of(image).size(270,420).asBufferedImage();
+                
+                ByteArrayOutputStream os = new ByteArrayOutputStream();
+                ImageIO.write(thumbnail, "jpeg", os);
+                InputStream is = new ByteArrayInputStream(os.toByteArray());
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                
+                for (int readNum; (readNum = is.read(buf)) != -1;) {
+                    bos.write(buf,0,readNum);
+                }
+                
+                barangIcon = new ImageIcon(thumbnail);
+                lbl_image.setIcon(barangIcon);
+                
+                barangImage = bos.toByteArray();
+                
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null,"Error processing image" + e.getMessage());
+            }
+            
+            
+    }else{
+            JOptionPane.showMessageDialog(null, "No file selected.");
+        }
+    }//GEN-LAST:event_btn_upload_imageActionPerformed
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             getDataSearch(txtSearch.getText());
-            
-            if(txtSearch.getText().isEmpty()){
+
+            if (txtSearch.getText().isEmpty()) {
                 getData();
             }
         }
-            
     }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void btnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKirimActionPerformed
+        // TODO add your handling code here:
+           hasil = conBarang.tambahBarang(txtNamaBarang.getText(),txtJenis.getText(),Integer.parseInt(txtHarga.getText()),txtMerk.getText(),txtWarna.getText(),Integer.parseInt(txtGaransi.getText()),Integer.parseInt(txtStok.getText()));
+        
+        String targetDirPath = "src/main/java/org/itenas/oop/gevam/gems/tubes/image";
+            File targetDir = new File(targetDirPath);
+            if (!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            
+            String fileName = txtNamaBarang.getText().replaceAll("\\s+","_")+".jpeg";
+            File targetFile = new File(targetDirPath,fileName);
+            
+            try(OutputStream os = new FileOutputStream(targetFile)) {
+                os.write(barangImage);
+                JOptionPane.showMessageDialog(null, "Gambar disimpan di" + targetFile.getAbsolutePath());
+        } catch (IOException ex) { JOptionPane.showMessageDialog(null, "Error saat menyimpan gambar: " + ex.getMessage());
+        }
+        
+        if (hasil) {
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            getData();
+            clearData();
+        } else {
+            JOptionPane.showMessageDialog(null, "Data gagal ditambahkan", " Pesan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnKirimActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         int i = tabelBarang.getSelectedRow();
+
+    if (i == -1) {
+        JOptionPane.showMessageDialog(btnDelete, "Harap pilih salah satu data", "warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(btnDelete, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        
+        int id = Integer.parseInt(tabelBarang.getModel().getValueAt(i, 0).toString());
+
+        boolean isDeleted = conBarang.deleteBarang(id);
+
+        if (isDeleted) {
+            JOptionPane.showMessageDialog(btnDelete, "Data berhasil dihapus.");
+            getData(); 
+            clearData(); 
+        } else {
+            JOptionPane.showMessageDialog(btnDelete, "Data gagal dihapus.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -532,11 +722,12 @@ public class viewKontrolProduk extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnKirim;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btn_upload_image;
     private javax.swing.JDesktopPane image_pane;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -549,7 +740,8 @@ public class viewKontrolProduk extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_image;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl_image;
     private javax.swing.JTable tabelBarang;
     private javax.swing.JTextField txtGaransi;
     private javax.swing.JTextField txtHarga;
@@ -559,5 +751,8 @@ public class viewKontrolProduk extends javax.swing.JFrame {
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStok;
     private javax.swing.JTextField txtWarna;
+    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_image_path;
     // End of variables declaration//GEN-END:variables
+    byte[] barangImage = null;
 }
