@@ -16,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import org.itenas.oop.gevam.gems.tubes.config.ConnectionManager;
 import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerBarang;
 
@@ -28,6 +29,13 @@ public class viewDashboard extends javax.swing.JFrame {
     Boolean hasil;
     ControllerBarang conBarang = new ControllerBarang();
     private DefaultTableModel model;
+    
+    
+    ConnectionManager conMan = new ConnectionManager();
+    Connection con = null;
+    PreparedStatement statement = null;
+    ResultSet resultSet = null;
+    
     
     /**
      * Creates new form viewDashboard
@@ -672,15 +680,21 @@ public class viewDashboard extends javax.swing.JFrame {
 
     private void lblStokAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblStokAncestorAdded
         // TODO add your handling code here:
-         String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
-        String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "basdat24"; // Ganti dengan password MySQL Anda
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+       
+        con = conMan.logOn();
+        
+        try 
+        
+        {
+
+
             // Query untuk menghitung jumlah data
             String query = "SELECT sum(stok) as a FROM barang";
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
+            
+            statement = con.prepareStatement(query);
+            
+            resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 // Ambil hasil COUNT
@@ -695,15 +709,14 @@ public class viewDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStokAncestorAdded
 
     private void lblAdminAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblAdminAncestorAdded
-    String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
-        String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "basdat24"; // Ganti dengan password MySQL Anda
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+         con = conMan.logOn();
+        try  {
+
             // Query untuk menghitung jumlah data
             String query = "SELECT count(Username) as c  FROM admin";
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
+            statement = con.prepareStatement(query);
+            resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 // Ambil hasil COUNT
@@ -724,15 +737,15 @@ public class viewDashboard extends javax.swing.JFrame {
 
     private void lblPengunjungAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblPengunjungAncestorAdded
         // TODO add your handling code here:
-        String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
-        String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "basdat24"; // Ganti dengan password MySQL Anda
+        
+          con = conMan.logOn();
+        
+        try  {
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Query untuk menghitung jumlah data
             String query = "SELECT count(nama_customer) as b  FROM transaksi ";
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
+            statement = con.prepareStatement(query);
+            resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 // Ambil hasil COUNT
