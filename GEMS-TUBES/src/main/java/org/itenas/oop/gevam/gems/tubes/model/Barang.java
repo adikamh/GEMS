@@ -6,7 +6,7 @@ package org.itenas.oop.gevam.gems.tubes.model;
  */
 
 public class Barang {
-    private int id;
+    private String id;
     private String namaBarang;
     private String newNama;
     private String jenis;
@@ -19,7 +19,7 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(int id, String namaBarang, String newNama, String jenis, int harga, String merk, String warna, int garansi, int stok) {
+    public Barang(String id, String namaBarang, String newNama, String jenis, int harga, String merk, String warna, int garansi, int stok) {
         this.id = id;
         this.namaBarang = namaBarang;
         this.newNama = newNama;
@@ -31,11 +31,11 @@ public class Barang {
         this.stok = stok;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

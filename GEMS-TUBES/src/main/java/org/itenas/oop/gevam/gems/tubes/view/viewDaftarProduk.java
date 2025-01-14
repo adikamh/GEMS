@@ -62,7 +62,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarang();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -82,7 +82,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangSearch(namaBarang);
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -102,7 +102,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangFilterjenisLaptop();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -122,7 +122,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangFilterjenisHandphone();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -142,7 +142,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangFilterjenisVr();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -162,7 +162,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangFilterjenisSmartWatch();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
@@ -182,7 +182,7 @@ public final class viewDaftarProduk extends javax.swing.JFrame {
         List<Barang> listBarang = conBarang.tampilkanBarangFilterjenisHeadset();
         String[] data = new String[8];
         for (Barang newBarang : listBarang) {
-            data[0] = Integer.toString(newBarang.getId());
+            data[0] = newBarang.getId();
             data[1] = newBarang.getNamaBarang();
             data[2] = newBarang.getJenis();
             data[3] = Integer.toString(newBarang.getHarga());
