@@ -191,6 +191,11 @@ public class viewDataKasir extends javax.swing.JFrame {
         });
 
         btnBack.setText("Back To Menu");
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+        });
 
         tabelKasir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -535,6 +540,12 @@ public class viewDataKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No file selected.");
         }
     }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        // TODO add your handling code here:
+        new viewDashboard().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnBackMouseClicked
 
     /**
      * @param args the command line arguments

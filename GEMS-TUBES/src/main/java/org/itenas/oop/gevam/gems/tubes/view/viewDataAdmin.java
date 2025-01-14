@@ -190,6 +190,11 @@ public class viewDataAdmin extends javax.swing.JFrame {
         });
 
         btnBack.setText("Back To Menu");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         tabelAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -534,6 +539,12 @@ public class viewDataAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No file selected.");
         }
     }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new viewDashboard().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments

@@ -108,6 +108,8 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        labelTambahAkunAdmin = new javax.swing.JLabel();
+        labelTambahAkunKasir = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
@@ -198,6 +200,42 @@ public class viewDashboard extends javax.swing.JFrame {
             }
         });
 
+        labelTambahAkunAdmin.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        labelTambahAkunAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        labelTambahAkunAdmin.setText("Tambah Akun Admin");
+        labelTambahAkunAdmin.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                labelTambahAkunAdminAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        labelTambahAkunAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelTambahAkunAdminMouseClicked(evt);
+            }
+        });
+
+        labelTambahAkunKasir.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        labelTambahAkunKasir.setForeground(new java.awt.Color(0, 0, 0));
+        labelTambahAkunKasir.setText("Tambah Akun Kasir");
+        labelTambahAkunKasir.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                labelTambahAkunKasirAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        labelTambahAkunKasir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelTambahAkunKasirMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -215,8 +253,10 @@ public class viewDashboard extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9))
                             .addComponent(kontrolProduk)
-                            .addComponent(jLabel11))))
-                .addGap(0, 76, Short.MAX_VALUE))
+                            .addComponent(jLabel11)
+                            .addComponent(labelTambahAkunAdmin)
+                            .addComponent(labelTambahAkunKasir))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -225,7 +265,7 @@ public class viewDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +278,13 @@ public class viewDashboard extends javax.swing.JFrame {
                 .addComponent(kontrolProduk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTambahAkunAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTambahAkunKasir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel9))
@@ -636,12 +680,15 @@ public class viewDashboard extends javax.swing.JFrame {
 
     private void lblStokAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblStokAncestorAdded
         // TODO add your handling code here:
+
        
         con = conMan.logOn();
         
         try 
         
         {
+
+
             // Query untuk menghitung jumlah data
             String query = "SELECT sum(stok) as a FROM barang";
             
@@ -662,8 +709,10 @@ public class viewDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStokAncestorAdded
 
     private void lblAdminAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblAdminAncestorAdded
+
          con = conMan.logOn();
         try  {
+
             // Query untuk menghitung jumlah data
             String query = "SELECT count(Username) as c  FROM admin";
             statement = con.prepareStatement(query);
@@ -688,9 +737,11 @@ public class viewDashboard extends javax.swing.JFrame {
 
     private void lblPengunjungAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblPengunjungAncestorAdded
         // TODO add your handling code here:
+        
           con = conMan.logOn();
-        try 
-        {
+        
+        try  {
+
             // Query untuk menghitung jumlah data
             String query = "SELECT count(nama_customer) as b  FROM transaksi ";
             statement = con.prepareStatement(query);
@@ -713,6 +764,27 @@ public class viewDashboard extends javax.swing.JFrame {
         new viewLogin().setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void labelTambahAkunAdminAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_labelTambahAkunAdminAncestorAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_labelTambahAkunAdminAncestorAdded
+
+    private void labelTambahAkunAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTambahAkunAdminMouseClicked
+        // TODO add your handling code here:
+        new viewDataAdmin().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelTambahAkunAdminMouseClicked
+
+    private void labelTambahAkunKasirAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_labelTambahAkunKasirAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labelTambahAkunKasirAncestorAdded
+
+    private void labelTambahAkunKasirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTambahAkunKasirMouseClicked
+        // TODO add your handling code here:
+        new viewDataKasir().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelTambahAkunKasirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -784,6 +856,8 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel kontrolProduk;
+    private javax.swing.JLabel labelTambahAkunAdmin;
+    private javax.swing.JLabel labelTambahAkunKasir;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblPengunjung;
     private javax.swing.JLabel lblStok;
