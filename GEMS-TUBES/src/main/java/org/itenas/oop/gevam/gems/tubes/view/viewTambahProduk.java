@@ -49,7 +49,7 @@ public class viewTambahProduk extends javax.swing.JFrame {
     
     String[] data = new String[8];
     for (Barang newBarang : listBarang) {
-        data[0] = Integer.toString(newBarang.getId());           
+        data[0] = newBarang.getId();           
         data[1] = newBarang.getNamaBarang();                   
         data[2] = newBarang.getJenis();                        
         data[3] = Double.toString(newBarang.getHarga());        
