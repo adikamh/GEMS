@@ -284,5 +284,145 @@ public class ControllerBarang {
         }
         return listBarang;
     }
+   
+    public List<Barang> tampilkanNamaBarangLaptop(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis  'Laptop' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+    
+    public List<Barang> tampilkanNamaBarangHandphone(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis = 'Handhphone' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+    
+    public List<Barang> tampilkanNamaBarangVR(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis = 'Virtual Reality' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+    
+    public List<Barang> tampilkanNamaBarangHeadset(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis =  ' Headset' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+    
+    public List<Barang> tampilkanNamaBarangSW(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis = 'Smart Watch' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+    
+        public List<Barang> tampilkanNamaBarangSearch(String namaBarang){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang WHERE jenis like '% "+ namaBarang +"' asc");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
+   
+public List<Barang> tampilkanNamaBarang(){
+        List<Barang> listBarang = new ArrayList<Barang>();
+        
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT namaBarang FROM barang");
+            while (rs.next()) {
+                Barang barang = new Barang();
+                barang.setNamaBarang(rs.getString("namaBarang"));
+                
+                listBarang.add(barang);
+            }
+            System.out.println("data berhasil diambil");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            System.out.println("data gagal diambil");
+        }
+        return listBarang;
+    }
 
 }
