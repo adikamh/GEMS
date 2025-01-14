@@ -170,6 +170,11 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Logout");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
 
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Ikon");
@@ -625,7 +630,7 @@ public class viewDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
          String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
         String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+        String password = " "; // Ganti dengan password MySQL Anda
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Query untuk menghitung jumlah data
@@ -648,7 +653,7 @@ public class viewDashboard extends javax.swing.JFrame {
     private void lblAdminAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblAdminAncestorAdded
     String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
         String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+        String password = " "; // Ganti dengan password MySQL Anda
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Query untuk menghitung jumlah data
@@ -677,7 +682,7 @@ public class viewDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         String url = "jdbc:mysql://localhost:3306/gems"; // Ganti dengan nama database Anda
         String user = "root"; // Ganti dengan username MySQL Anda
-        String password = "itenas_096476"; // Ganti dengan password MySQL Anda
+        String password = " "; // Ganti dengan password MySQL Anda
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Query untuk menghitung jumlah data
@@ -696,6 +701,12 @@ public class viewDashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_lblPengunjungAncestorAdded
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        new viewLogin().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
