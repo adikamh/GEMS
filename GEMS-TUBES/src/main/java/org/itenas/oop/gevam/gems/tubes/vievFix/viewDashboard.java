@@ -5,6 +5,8 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JComponent;
+
 
 
 public class viewDashboard extends javax.swing.JFrame {
@@ -28,20 +30,34 @@ public class viewDashboard extends javax.swing.JFrame {
 
         dashboardAdmin2 = new org.itenas.oop.gevam.gems.tubes.viewFix.panel.dashboardAdmin();
         menu1 = new org.itenas.oop.gevam.gems.tubes.vievFix.komponen.menu();
+        dashboardAdmin1 = new org.itenas.oop.gevam.gems.tubes.viewFix.panel.dashboardAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
+        javax.swing.GroupLayout dashboardAdmin1Layout = new javax.swing.GroupLayout(dashboardAdmin1);
+        dashboardAdmin1.setLayout(dashboardAdmin1Layout);
+        dashboardAdmin1Layout.setHorizontalGroup(
+            dashboardAdmin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        dashboardAdmin1Layout.setVerticalGroup(
+            dashboardAdmin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1);
         menu1.setLayout(menu1Layout);
         menu1Layout.setHorizontalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
+            .addGroup(menu1Layout.createSequentialGroup()
+                .addComponent(dashboardAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addComponent(dashboardAdmin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout dashboardAdmin2Layout = new javax.swing.GroupLayout(dashboardAdmin2);
@@ -50,7 +66,7 @@ public class viewDashboard extends javax.swing.JFrame {
             dashboardAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardAdmin2Layout.createSequentialGroup()
                 .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 787, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         dashboardAdmin2Layout.setVerticalGroup(
             dashboardAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,6 +127,7 @@ public class viewDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.itenas.oop.gevam.gems.tubes.viewFix.panel.dashboardAdmin dashboardAdmin1;
     private org.itenas.oop.gevam.gems.tubes.viewFix.panel.dashboardAdmin dashboardAdmin2;
     private org.itenas.oop.gevam.gems.tubes.vievFix.komponen.menu menu1;
     // End of variables declaration//GEN-END:variables

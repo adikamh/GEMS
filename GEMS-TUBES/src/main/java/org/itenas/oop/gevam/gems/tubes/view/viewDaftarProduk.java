@@ -30,9 +30,8 @@ import java.awt.event.KeyEvent;
  */
 public final class viewDaftarProduk extends javax.swing.JFrame {
     
-     Boolean hasil;
     ControllerBarang conBarang = new ControllerBarang();
-    private DefaultTableModel model;
+    private final DefaultTableModel model;
     /**
      * Creates new form viewDaftarProduk
      */

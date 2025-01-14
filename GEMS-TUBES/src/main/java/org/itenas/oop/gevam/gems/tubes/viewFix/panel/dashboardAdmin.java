@@ -3,6 +3,7 @@ package org.itenas.oop.gevam.gems.tubes.viewFix.panel;
  *
  * @author naufa
  */
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -22,7 +23,7 @@ public class dashboardAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,7 +42,7 @@ public class dashboardAdmin extends javax.swing.JPanel {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
         g2.fillRoundRect (0, 0, getWidth(), getHeight(), 20, 15);
-        super.paintComponents(grphcs);
+        super.paintChildren(grphcs);
     }
     
 

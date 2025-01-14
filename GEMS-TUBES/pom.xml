@@ -5,6 +5,20 @@
     <artifactId>GEMS-TUBES</artifactId>
     <version>1.0.-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -14,7 +28,7 @@
         <dependency>
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
-            <version>0.4.20</version>
+            <version>0.4.17</version>
             <type>jar</type>
         </dependency>
     </dependencies>

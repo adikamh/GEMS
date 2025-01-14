@@ -23,18 +23,7 @@ public class viewDashboard extends javax.swing.JFrame {
      */
     public viewDashboard() {
         initComponents();
-        setOpaque(false);
         setBackground(new Color(0,204,204));
-    }
-
-    private void setOpaque(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private static class JPanel2 {
-
-        public JPanel2() {
-        }
     }
 
     @SuppressWarnings("unchecked")
