@@ -325,13 +325,51 @@ public class viewLogin extends javax.swing.JFrame {
 
     private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
         if (evt.getKeyCode () == KeyEvent.VK_ENTER) {
-    txtUsernameKeyPressed(null);
+    String username = txtUsername.getText();
+    String password = String.valueOf(txtPassword.getPassword());
+
+    try {
+        ControlCekLogin loginChecker = new ControlCekLogin();
+
+        if (loginChecker.checkCredentials(username, password, "admin")) {
+            JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Admin", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new viewDashboard().setVisible(true);
+            dispose();
+        } else if (loginChecker.checkCredentials(username, password, "kasir")) {
+            JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Kasir", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new viewLaporanTransaksi().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Username atau Password yang Anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_txtUsernameKeyPressed
     }
     
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
     if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        txtPasswordKeyPressed(null);
+        String username = txtUsername.getText();
+    String password = String.valueOf(txtPassword.getPassword());
+
+    try {
+        ControlCekLogin loginChecker = new ControlCekLogin();
+
+        if (loginChecker.checkCredentials(username, password, "admin")) {
+            JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Admin", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new viewDashboard().setVisible(true);
+            dispose();
+        } else if (loginChecker.checkCredentials(username, password, "kasir")) {
+            JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Kasir", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new viewLaporanTransaksi().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Username atau Password yang Anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
  

@@ -5,6 +5,7 @@
 package org.itenas.oop.gevam.gems.tubes.view;
 
 
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -191,6 +192,11 @@ public class viewKontrolProduk extends javax.swing.JFrame {
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
             }
         });
 
@@ -453,7 +459,7 @@ public class viewKontrolProduk extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-       // new viewLogin().setVisible(true);
+       new viewLogin().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -474,6 +480,18 @@ public class viewKontrolProduk extends javax.swing.JFrame {
     private void txtNamaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaBarangActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            getDataSearch(txtSearch.getText());
+            
+            if(txtSearch.getText().isEmpty()){
+                getData();
+            }
+        }
+            
+    }//GEN-LAST:event_txtSearchKeyPressed
 
     /**
      * @param args the command line arguments
