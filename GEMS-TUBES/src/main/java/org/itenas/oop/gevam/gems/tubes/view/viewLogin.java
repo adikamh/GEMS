@@ -296,7 +296,7 @@ public class viewLogin extends javax.swing.JFrame {
             dispose();
         } else if (loginChecker.checkCredentials(username, password, "kasir")) {
             JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Kasir", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new viewLaporanTransaksi().setVisible(true);
+            new viewTransaksiKasir().setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Username atau Password yang Anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
@@ -362,7 +362,7 @@ public class viewLogin extends javax.swing.JFrame {
             dispose();
         } else if (loginChecker.checkCredentials(username, password, "kasir")) {
             JOptionPane.showMessageDialog(this, "Login Berhasil sebagai Kasir", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new viewLaporanTransaksi().setVisible(true);
+            new viewTransaksiKasir().setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Username atau Password yang Anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);

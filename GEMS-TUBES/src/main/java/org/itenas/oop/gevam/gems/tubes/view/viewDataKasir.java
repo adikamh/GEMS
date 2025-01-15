@@ -196,6 +196,11 @@ public class viewDataKasir extends javax.swing.JFrame {
                 btnBackMouseClicked(evt);
             }
         });
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         tabelKasir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -546,6 +551,12 @@ public class viewDataKasir extends javax.swing.JFrame {
         new viewDashboard().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new viewDashboard().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
