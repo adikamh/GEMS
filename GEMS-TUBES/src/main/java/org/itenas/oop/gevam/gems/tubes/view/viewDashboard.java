@@ -106,7 +106,6 @@ public class viewDashboard extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         labelTambahAkunAdmin = new javax.swing.JLabel();
         labelTambahAkunKasir = new javax.swing.JLabel();
@@ -186,13 +185,10 @@ public class viewDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Ikon");
-
         jComboBox1.setBackground(new java.awt.Color(145, 221, 207));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manajemen dan Penjualan", "Laporan Transaksi", "Laporan Penjualan", "Daftar Produk" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manajemen dan Penjualan", "Laporan Transaksi", "Laporan Penjualan" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,8 +245,7 @@ public class viewDashboard extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(61, 61, 61)
                                 .addComponent(jLabel9))
                             .addComponent(kontrolProduk)
                             .addComponent(jLabel11)
@@ -285,9 +280,7 @@ public class viewDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel9))
+                .addComponent(jLabel9)
                 .addGap(16, 16, 16))
         );
 
@@ -661,11 +654,7 @@ public class viewDashboard extends javax.swing.JFrame {
                 new viewLaporanPenjualan().setVisible(true);
                 dispose();
                 break;
-                
-             case 3:
-                new viewDataKasir().setVisible(true);
-                dispose();
-                break;
+
                 
             default:
                 throw new AssertionError();
@@ -836,7 +825,6 @@ public class viewDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
