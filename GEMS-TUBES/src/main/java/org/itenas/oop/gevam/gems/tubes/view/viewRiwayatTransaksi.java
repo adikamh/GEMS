@@ -15,6 +15,7 @@ import org.itenas.oop.gevam.gems.tubes.model.Barang;
 import org.itenas.oop.gevam.gems.tubes.model.Transaksi;
 import org.itenas.oop.gevam.gems.tubes.repository.ControllerRiwayatTransaksi;
 import java.sql.PreparedStatement;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -54,10 +55,14 @@ public class viewRiwayatTransaksi extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(247, 249, 242));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1366, 768));
 
         tabelDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,6 +86,8 @@ public class viewRiwayatTransaksi extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelDetail);
 
+        txtSearch.setBackground(new java.awt.Color(255, 255, 255));
+        txtSearch.setForeground(new java.awt.Color(0, 0, 0));
         txtSearch.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 txtSearchAncestorAdded(evt);
@@ -101,69 +108,115 @@ public class viewRiwayatTransaksi extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setForeground(new java.awt.Color(0, 0, 0));
         btnSearch.setText("Search");
+        btnSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("KEMBALI");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("LOGOUT");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("RIWAYAT TRANSAKSI");
+
+        jPanel4.setBackground(new java.awt.Color(77, 161, 169));
+        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setForeground(new java.awt.Color(77, 161, 169));
+
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(28, 28, 28))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63))
+                        .addComponent(jLabel3)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(83, 83, 83)))))
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1381, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,32 +227,40 @@ public class viewRiwayatTransaksi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelDetailAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelDetailAncestorAdded
-        // TODO add your handling code here:
-        DefaultTableModel dtm = (DefaultTableModel) tabelDetail.getModel();
-        dtm.setRowCount(0);
-        String query = "SELECT d.id_detail, t.id_transaksi, b.id, b.namaBarang,d.jumlah, d.harga_peritem, d.totalHarga FROM detail_transaksi d"
-                + " INNER JOIN transaksi t ON d.id_transaksi = t.id_transaksi INNER JOIN barang b"
-                + " ON b.id = d.id";
-        
-        try (Statement stmt = con.createStatement(); 
-                ResultSet rs = stmt.executeQuery(query)) {
-            System.out.println("Daftar Transaksi:");
-            while (rs.next()) {
-                int idDetail = rs.getInt("id_detail");
-                int idTransaksi = rs.getInt("id_transaksi");
-                int Id = rs.getInt("id");
-                String namaBarang = rs.getString("namaBarang");
-                int Jumlah = rs.getInt("jumlah");
-                double hargaPeritem = rs.getDouble("harga_peritem");
-                double totalHarga = rs.getDouble("totalHarga");
-               dtm.addRow(new Object[]{idDetail, idTransaksi, Id, namaBarang,Jumlah, hargaPeritem, totalHarga});
-            }
-           
-        } catch (SQLException e) {
-            e.printStackTrace();
+            DefaultTableModel dtm = (DefaultTableModel) tabelDetail.getModel();
+    dtm.setRowCount(0);
+    String nama_barang = txtSearch.getText().trim();
+
+    String query = "SELECT d.id_detail, t.id_transaksi, b.id, b.namaBarang, d.jumlah, d.harga_peritem, d.totalHarga FROM detail_transaksi d"
+            + " INNER JOIN transaksi t ON d.id_transaksi = t.id_transaksi"
+            + " INNER JOIN barang b ON b.id = d.id WHERE namaBarang LIKE ?";
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+
+    try {
+        PreparedStatement dk = con.prepareStatement(query);
+        dk.setString(1, "%" + nama_barang + "%");
+        ResultSet rs = dk.executeQuery();
+        System.out.println("Daftar Transaksi:");
+        while (rs.next()) {
+            int idDetail = rs.getInt("id_detail");
+            int idTransaksi = rs.getInt("id_transaksi");
+            int Id = rs.getInt("id");
+            String namaBarang = rs.getString("namaBarang");
+            int Jumlah = rs.getInt("jumlah");
+            double hargaPeritem = rs.getDouble("harga_peritem");
+            double totalHarga = rs.getDouble("totalHarga");
+
+            // Format harga per item dan total harga
+            String formattedHargaPeritem = decimalFormat.format(hargaPeritem);
+            String formattedTotalHarga = decimalFormat.format(totalHarga);
+
+            dtm.addRow(new Object[]{idDetail, idTransaksi, Id, namaBarang, Jumlah, formattedHargaPeritem, formattedTotalHarga});
         }
-    
-        
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_tabelDetailAncestorAdded
 
     private void txtSearchAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtSearchAncestorAdded
@@ -273,44 +334,58 @@ public class viewRiwayatTransaksi extends javax.swing.JFrame {
         });
     }
     
-    private void cariRiwayatTransaksiByNama(){
+   private void cariRiwayatTransaksiByNama(){
         DefaultTableModel dtm = (DefaultTableModel) tabelDetail.getModel();
-        dtm.setRowCount(0);
-        String nama_barang = txtSearch.getText().trim();
-        
-       
-        
-        String query = "SELECT d.id_detail, t.id_transaksi, b.id, b.namaBarang,d.jumlah, d.harga_peritem, d.totalHarga FROM detail_transaksi d"
-                + " INNER JOIN transaksi t ON d.id_transaksi = t.id_transaksi INNER JOIN barang b"
-                + " ON b.id = d.id WHERE namaBarang LIKE ?";
-        
-        try {
-                PreparedStatement dk = con.prepareStatement(query);
-                dk.setString(1, "%" + nama_barang + "%");
-                ResultSet rs = dk.executeQuery(); 
-            System.out.println("Daftar Transaksi:");
-            while (rs.next()) {
-                int idDetail = rs.getInt("id_detail");
-                int idTransaksi = rs.getInt("id_transaksi");
-                int Id = rs.getInt("id");
-                String namaBarang = rs.getString("namaBarang");
-                int Jumlah = rs.getInt("jumlah");
-                double hargaPeritem = rs.getDouble("harga_peritem");
-                double totalHarga = rs.getDouble("totalHarga");
-               dtm.addRow(new Object[]{idDetail, idTransaksi, Id, namaBarang,Jumlah, hargaPeritem, totalHarga});
-            }
-           
-        } catch (SQLException e) {
+dtm.setRowCount(0); // Reset tabel agar hanya menampilkan hasil baru
+String id_transaksi = txtSearch.getText().trim(); // Ambil ID transaksi dari input
+
+String query = "SELECT d.id_detail, t.id_transaksi, b.id, b.namaBarang, d.jumlah, d.harga_peritem, d.totalHarga "
+            + "FROM detail_transaksi d "
+            + "INNER JOIN transaksi t ON d.id_transaksi = t.id_transaksi "
+            + "INNER JOIN barang b ON b.id = d.id "
+            + "WHERE t.id_transaksi LIKE ?"; // Filter berdasarkan ID Transaksi
+
+DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+
+try {
+    PreparedStatement dk = con.prepareStatement(query);
+    dk.setString(1, "%" + id_transaksi + "%"); // Gunakan wildcard untuk pencarian fleksibel
+    ResultSet rs = dk.executeQuery();
+
+    System.out.println("Hasil Pencarian Transaksi:");
+    while (rs.next()) {
+        int idDetail = rs.getInt("id_detail");
+        int idTransaksi = rs.getInt("id_transaksi");
+        int Id = rs.getInt("id");
+        String namaBarang = rs.getString("namaBarang");
+        int Jumlah = rs.getInt("jumlah");
+        double hargaPeritem = rs.getDouble("harga_peritem");
+        double totalHarga = rs.getDouble("totalHarga");
+
+        // Format harga per item dan total harga
+        String formattedHargaPeritem = decimalFormat.format(hargaPeritem);
+        String formattedTotalHarga = decimalFormat.format(totalHarga);
+
+        // Tambahkan baris ke tabel
+        dtm.addRow(new Object[]{idDetail, idTransaksi, Id, namaBarang, Jumlah, formattedHargaPeritem, formattedTotalHarga});
+    }
+
+    } catch (SQLException e) {
             e.printStackTrace();
         }
     
     }
  
+
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelDetail;
     private javax.swing.JTextField txtSearch;
